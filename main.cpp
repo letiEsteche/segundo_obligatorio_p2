@@ -1,6 +1,9 @@
 #include "Menu.h"
 
+
 int main()
 {
-    printf("je");
+    Fecha f;
+    cargarFecha(f);
+
 }

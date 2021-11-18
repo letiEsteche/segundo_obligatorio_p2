@@ -39,7 +39,7 @@ void ContarCuantosSociosNacieronAntesDeFechaDada(ABB a, Fecha f, int c);
 //fechas (incluidas ambas fechas). Se debe verificar previamente que ambas fechas ingresadas
 //sean válidas y que la primera fecha sea menor o igual que la segunda.
 
-void ContarHabilidadesEntreDosFechasIngresadas(ABB a, Fecha a, Fecha b);
+void ContarHabilidadesEntreDosFechasIngresadas(ABB a, Fecha f, Fecha b);
 
 //Listar todos los socios registrados en el sistema, ordenados por cédula de menor a mayor.
 //Los datos de un mismo socio (cédula mágica, nombre, fecha de nacimiento, dimensión de
