@@ -1,8 +1,7 @@
 #ifndef MENU_H_INCLUDED
 #define MENU_H_INCLUDED
-#include "ABBTodosLosSocios.h"
-#include "ListaHabilidadesDeSocio.h"
 
 
+void menuPrincipal(int &opcion);
 
 #endif // MENU_H_INCLUDED

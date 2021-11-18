@@ -21,7 +21,7 @@ void InsertarSocio (ABB &a, Mago m);
 /* saber si un elemento pertenece al ABB, versión recursiva */
 boolean ExisteSocio (ABB a, long cedula);
 
-void Desplegar (ABB a);
+
 
 int ContarCantidadDeBrujos(ABB a,int b);
 
@@ -33,7 +33,7 @@ void ContarSociosDeCadaCategoria(ABB a);
 
 //Dada una fecha de nacimiento, contar cuántos de los socios registrados en el sistema nacieron
 //antes de dicha fecha. Se debe verificar previamente que la fecha ingresada sea válida.
-void ContarCuantosSociosNacieronAntesDeFechaDada(ABB a, Fecha f, int c);
+int ContarCuantosSociosNacieronAntesDeFechaDada(ABB a, Fecha f);
 
 //Dadas dos fechas, contar cuántas habilidades fueron ingresadas dentro de dicho rango de
 //fechas (incluidas ambas fechas). Se debe verificar previamente que ambas fechas ingresadas
@@ -45,7 +45,7 @@ void ContarHabilidadesEntreDosFechasIngresadas(ABB a, Fecha f, Fecha b);
 //Los datos de un mismo socio (cédula mágica, nombre, fecha de nacimiento, dimensión de
 //origen y categoría mágica) deberán listarse todos en una misma línea
 //recorrer en orden
-void ListarTodosLosSocios(ABB a);
+void DesplegarTodosLosSocios (ABB a);
 
 //Listar todos aquellos socios registrados en el sistema que aún no han manifestado ninguna
 //habilidad, ordenados por cédula de menor a mayor. Los datos de un mismo socio (cédula

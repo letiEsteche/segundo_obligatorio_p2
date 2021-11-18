@@ -40,7 +40,6 @@ void scan(string &s)
     char letra;
     int i = 0;
     aux = new char[MAX-1];
-    printf("Ingrese nombre del socio \n");
     fflush(stdin);
     scanf("%c", &letra);
     while((letra != '\n')&&(i < MAX - 1)){
