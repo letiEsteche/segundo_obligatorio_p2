@@ -5,7 +5,7 @@ void Crear(Lista &L)
     L = NULL;
 }
 
-void IngresarHabilidad(Lista &L, Habilidad h)
+/*void IngresarHabilidad(Lista &L, Habilidad h)
 {
     if(ExisteSocio){
         if(TieneAlgunaHabilidad(h.cedula)){
@@ -29,7 +29,7 @@ void FechaDeUltimaHabilidadRegistradaPorUnSocio(long cedula)
 {
     if()
 }
-
+*/
 boolean Vacio(Lista L)
 {
     boolean es = FALSE;

@@ -48,7 +48,7 @@ void ListarHabilidadesDeUnSocio(Lista L, long cedula);
 //Los datos de una misma habilidad (nombre, fecha de manifestación, cédula mágica del socio
 //y tipo de habilidad) deberán listarse todos en una misma línea. Se debe verificar previamente
 //que la fecha ingresada sea válida.
-void ListarHabilidadesEnUnaFechaDada(Lista L, fecha f);
+//void ListarHabilidadesEnUnaFechaDada(Lista L, fecha f);
 
 
 

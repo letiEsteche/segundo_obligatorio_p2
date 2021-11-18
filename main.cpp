@@ -3,5 +3,7 @@
 
 int main()
 {
+    Fecha f;
+    cargarFecha(f);
 
 }
