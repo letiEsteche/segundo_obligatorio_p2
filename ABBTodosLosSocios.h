@@ -1,29 +1,29 @@
 #ifndef ABBTODOSLOSSOCIOS_H_INCLUDED
 #define ABBTODOSLOSSOCIOS_H_INCLUDED
+
 #include "Mago.h"
 #include "ListaHabilidadesDeSocio.h"
 
 //ABB de todos los socios ordenar por cedula de menor a mayor
-typedef struct nodo_TodosLosSocios{
-                                    Mago info;
-                                    nodo_TodosLosSocios*hizq;
-                                    nodo_TodosLosSocios*hder;
-                                    }NodoSocio;
-typedef NodoSocio * ABB;
+typedef struct nodo_TodosLosSocios {
+    Mago info;
+    nodo_TodosLosSocios *hizq;
+    nodo_TodosLosSocios *hder;
+} NodoSocio;
+typedef NodoSocio *ABB;
 
 /* crear un �rbol vac�o */
-void Crear (ABB &a);
+void Crear(ABB &a);
 
 /* insertar un nuevo valor en el ABB */
 /* precondici�n: el valor no exist�a previamente en el ABB */
-void InsertarSocio (ABB &a, Mago m);
+void InsertarSocio(ABB &a, Mago m);
 
 /* saber si un elemento pertenece al ABB, versi�n recursiva */
-boolean ExisteSocio (ABB a, long cedula);
+boolean ExisteSocio(ABB a, long cedula);
 
 
-
-int ContarCantidadDeBrujos(ABB a,int b);
+int ContarCantidadDeBrujos(ABB a, int b);
 
 int ContarCantidadDeHadas(ABB a, int h);
 
@@ -43,7 +43,7 @@ int ContarCuantosSociosNacieronAntesDeFechaDada(ABB a, Fecha f);
 //Los datos de un mismo socio (c�dula m�gica, nombre, fecha de nacimiento, dimensi�n de
 //origen y categor�a m�gica) deber�n listarse todos en una misma l�nea
 //recorrer en orden
-void DesplegarTodosLosSocios (ABB a);
+void DesplegarTodosLosSocios(ABB a);
 
 //Listar todos aquellos socios registrados en el sistema que a�n no han manifestado ninguna
 //habilidad, ordenados por c�dula de menor a mayor. Los datos de un mismo socio (c�dula
