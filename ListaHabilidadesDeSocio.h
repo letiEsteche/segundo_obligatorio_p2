@@ -22,14 +22,12 @@ void IngresarHabilidad(Lista &L, Habilidad h);
 
 boolean Vacio(Lista L);
 
+boolean TieneAlgunaHabilidad(TipoHabilidad t);
 
-float Primero(Lista L);
+void FechaDeUltimaHabilidadRegistradaPorUnSocio(long cedula);
 
+int ContarHabilidadesEntreDosFechasIngresadas(Lista L, TipoHabilidad t);
 
-void Resta(Lista &L);
-
-
-void InsFront(Lista &L, float e);
 
 //usar en mago mas poderoso
 int CantidadDeHabilidadesPorCedula(Lista L, long cedula);
@@ -49,7 +47,7 @@ void ListarHabilidadesDeUnSocio(Lista L, long cedula);
 //Los datos de una misma habilidad (nombre, fecha de manifestación, cédula mágica del socio
 //y tipo de habilidad) deberán listarse todos en una misma línea. Se debe verificar previamente
 //que la fecha ingresada sea válida.
-//void ListarHabilidadesEnUnaFechaDada(Lista L, fecha f);
+void ListarHabilidadesEnUnaFechaDada(Lista L, Fecha f);
 
 
 

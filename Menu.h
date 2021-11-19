@@ -3,5 +3,6 @@
 
 
 void menuPrincipal(int &opcion);
+void menuConsultasYListas(int &opcion);
 
 #endif // MENU_H_INCLUDED

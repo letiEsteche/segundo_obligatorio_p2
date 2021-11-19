@@ -100,7 +100,15 @@ int ContarCuantosSociosNacieronAntesDeFechaDada(ABB a, Fecha f)
     }
 }
 
-void ContarHabilidadesEntreDosFechasIngresadas(ABB a, Fecha f, Fecha b)
+
+
+void ListarTodosLosSociosSinHabilidades(ABB a)
+{
+    if(TieneAlgunaHabilidad == FALSE)
+        return DesplegarTodosLosSocios(a);
+}
+
+void ListarSocioConMasHabilidades(ABB a)
 {
 
 }

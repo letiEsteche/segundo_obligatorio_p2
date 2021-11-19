@@ -6,7 +6,9 @@ int main()
 {
     ABB a;
     Habilidad h;
+    TipoHabilidad t;
     Fecha f;
+    Lista i;
 
     Mago m;
     m.nombre = "leticia";
@@ -27,7 +29,7 @@ int main()
     n.nacimiento.mes=12;
     n.nacimiento.anio=1900;
 
-    Mago l ;
+    Mago l;
     l.nombre = "agua";
     l.cedula = 333;
     l.categoria = BRUJO;
@@ -73,6 +75,16 @@ int main()
     cargarFecha(f);
     printf("La cantidad de magos que nacieron antes de esta fecha son: %d", ContarCuantosSociosNacieronAntesDeFechaDada(a, f));
 
+//Dadas dos fechas, contar cuántas habilidades fueron ingresadas dentro de dicho rango de
+//fechas (incluidas ambas fechas).
+    Fecha b;
+    printf("\nCargar una fecha: ");
+    cargarFecha(f);
+    printf("\nCargar otra fecha: ");
+    cargarFecha(b);
+    ValidarPrimeraFechaSeaMenorALaSegunda(f,b);
+
+    ContarHabilidadesEntreDosFechasIngresadas(l,t);
 
 
 }
