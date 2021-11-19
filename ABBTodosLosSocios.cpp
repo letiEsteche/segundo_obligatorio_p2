@@ -80,12 +80,20 @@ int ContarCantidadDeHechiceros(ABB a)
             return ContarCantidadDeHechiceros(a->hder) + ContarCantidadDeHechiceros(a->hizq);
 }
 
-void ContarSociosDeCadaCategoria(ABB a)
+void ContarSociosDeCadaCategoria(ABB a, int &countBrujos, int &countHadas, int &countHechiceros)
 {
-    printf("\nLa suma de Brujos es: %d",ContarCantidadDeBrujos(a));
-    printf("\nLa suma de Hadas es: %d",ContarCantidadDeHadas(a));
-    printf("\nLa suma de Hechiceros es: %d",ContarCantidadDeHechiceros(a));
+    if(a != NULL) {
+        if (a->info.categoria == HECHICERO) {
+            countHechiceros++;
+        } else if (a->info.categoria == HADA) { // llamar al las selectora
+            countHadas++;
+        } else if (a->info.categoria == BRUJO) {
+            countBrujos++;
+        }
 
+        ContarSociosDeCadaCategoria(a->hizq, countBrujos, countHadas, countHechiceros);
+        ContarSociosDeCadaCategoria(a->hder, countBrujos, countHadas, countHechiceros);
+    }
 }
 
 int ContarCuantosSociosNacieronAntesDeFechaDada(ABB a, Fecha f)
@@ -98,9 +106,4 @@ int ContarCuantosSociosNacieronAntesDeFechaDada(ABB a, Fecha f)
         else
             return ContarCuantosSociosNacieronAntesDeFechaDada(a->hder,f) + ContarCuantosSociosNacieronAntesDeFechaDada(a->hizq,f);
     }
-}
-
-void ContarHabilidadesEntreDosFechasIngresadas(ABB a, Fecha f, Fecha b)
-{
-
 }

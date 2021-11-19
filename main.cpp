@@ -17,7 +17,6 @@ int main()
     m.nacimiento.mes=12;
     m.nacimiento.anio=1900;
 
-
     Mago n;
     n.nombre = "algo";
     n.cedula = 222;
@@ -61,17 +60,22 @@ int main()
     InsertarSocio(a,x);
     InsertarSocio(a, n);
     InsertarSocio(a,w);
+
     if(ExisteSocio(a, 555))
         printf("si");
 
     DesplegarTodosLosSocios(a);
-    ContarSociosDeCadaCategoria(a);
+    int brujos = 0;
+    int hadas = 0;
+    int hechiceros = 0;
+    ContarSociosDeCadaCategoria(a, brujos, hadas, hechiceros);
+    printf("\nBrujos:%d \nHadas:%d \nHechiceros:%d", brujos, hadas, hechiceros);
 
-    CargarHabilidad(h);
-    MostrarHabilidad(h);
-
-    cargarFecha(f);
-    printf("La cantidad de magos que nacieron antes de esta fecha son: %d", ContarCuantosSociosNacieronAntesDeFechaDada(a, f));
+//    CargarHabilidad(h);
+//    MostrarHabilidad(h);
+//
+//    cargarFecha(f);
+//    printf("La cantidad de magos que nacieron antes de esta fecha son: %d", ContarCuantosSociosNacieronAntesDeFechaDada(a, f));
 
 
 

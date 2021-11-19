@@ -29,8 +29,6 @@ float Primero(Lista L);
 void Resta(Lista &L);
 
 
-void InsFront(Lista &L, float e);
-
 //usar en mago mas poderoso
 int CantidadDeHabilidadesPorCedula(Lista L, long cedula);
 
