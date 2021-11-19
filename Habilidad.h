@@ -12,4 +12,18 @@ typedef struct{
                 TipoHabilidad tipo;
                 }Habilidad;
 
+void CargarHabilidad(Habilidad &h);
+
+void MostrarHabilidad(Habilidad h);
+
+string DarNombreHabilidad(Habilidad h);
+
+Fecha DarFechaDeManifestacionHabilidad(Habilidad h);
+
+long DarCedulaHabilidad(Habilidad h);
+
+TipoHabilidad DarTipoDeHabilidad(Habilidad h);
+
+//cargar mostrar y selectoras
+
 #endif // HABILIDAD_H_INCLUDED

@@ -12,6 +12,20 @@ typedef struct{
                 CategoriaMago categoria;
                 }Mago;
 
+void CargarMago(Mago &m);
+
+void MostrarMago(Mago m);
+
+string DarNombre(Mago m);
+
+long DarCedula(Mago m);
+
+Fecha DarFecha(Mago m);
+
+string DarDimensionOrigen(Mago m);
+
+CategoriaMago DarCategroriaMago (Mago m);
+
 
 
 #endif // MAGO_H_INCLUDED

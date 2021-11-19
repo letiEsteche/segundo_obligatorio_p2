@@ -31,11 +31,12 @@ void Resta(Lista &L);
 
 void InsFront(Lista &L, float e);
 
+//usar en mago mas poderoso
 int CantidadDeHabilidadesPorCedula(Lista L, long cedula);
 
 //Contar cuántas habilidades de cada tipo (naturales, poco naturales y sobrenaturales) hay
 //registradas en el sistema.
-void CantidadHabilidadDeCadaTipo(Lista L);
+void CantidadHabilidadDeCadaTipo(Lista L, int &n, int &p, int &s);
 
 //Dada la cédula mágica de un socio, listar todas las habilidades correspondientes a dicho
 //socio, ordenadas en forma cronológica inversa (desde las más recientes hacia las más
