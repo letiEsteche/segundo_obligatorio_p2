@@ -5,39 +5,32 @@ void Crear(Lista &L)
     L = NULL;
 }
 
-/*void IngresarHabilidadA(Lista &l, )
-{
-    if(ExisteSocio(a, DarCedulaHabilidad(h))){
 
-
-    }else{
-        printf("La cedula ingresada en la habilidad no se encuentra en el sistema");
-    }
-
-
-}
-
-*/
-boolean TieneAlgunaHabilidad(Lista L, TipoHabilidad t)
+boolean TieneAlgunaHabilidad(Lista L, long cedula)
 {
     boolean cedulaTieneHabilidad = FALSE;
-    if((L->info.tipo == 'NATURAL') || (L->info.tipo == 'POCONATURAL') || (L->info.tipo == 'SOBRENATURAL')){
-        cedulaTieneHabilidad = TRUE;
-    }
+    while(L != NULL)
+        if(L->info.cedula == cedula)
+            cedulaTieneHabilidad = TRUE;
+
     return cedulaTieneHabilidad;
 }
 
 
-Fecha FechaDeUltimaHabilidadRegistradaPorUnSocio(Lista L)
+Fecha FechaDeUltimaHabilidadRegistradaPorUnSocio(Lista L, long cedula)
 {
-    while(L->sig != NULL){
-        L = L->sig;
+    Fecha aux;
+    boolean encontre = FALSE;
+    while(L != NULL && !encontre){
+        if(L->info.cedula == cedula){
+             aux = L->info.ManifestacionHabilidad;
+             encontre == TRUE;
+        }
     }
-
-    return L->info.ManifestacionHabilidad;
+    return aux;
 }
 
-int ContarHabilidadesEntreDosFechasIngresadas(Lista L, TipoHabilidad t)
+/*int ContarHabilidadesEntreDosFechasIngresadas(Lista L, TipoHabilidad t)
 {
     Fecha f, h;
     if(t == NULL)
@@ -51,7 +44,7 @@ int ContarHabilidadesEntreDosFechasIngresadas(Lista L, TipoHabilidad t)
                 return ContarHabilidadesEntreDosFechasIngresadas(L->sig, t);
     }
 }
-
+*/
 boolean Vacio(Lista L)
 {
     boolean es = FALSE;
@@ -60,6 +53,37 @@ boolean Vacio(Lista L)
     return es;
 }
 
+void IngresarHabilidad(Lista &L ,Habilidad h)
+{
+    if(ValidarPrimeraFechaSeaMenorOIgualALaSegunda(FechaDeUltimaHabilidadRegistradaPorUnSocio(L, h.cedula), h.ManifestacionHabilidad)){
+        if(L == NULL){//no hay ninguna habilidad en la lista
+            Lista aux= new NodoHabilidad;
+            aux->info = h;
+            aux->sig = NULL;
+            L = aux;
 
+        }else{
+            while(L->sig != NULL){//existe al menos una habilidad del socio
+                    if(ValidarPrimeraFechaSeaMenorOIgualALaSegunda(FechaDeUltimaHabilidadRegistradaPorUnSocio(L, h.cedula), h.ManifestacionHabilidad)){
+                        Lista aux = new NodoHabilidad;
+                        aux->info = h;
+                        aux->sig = L;
+                        L = aux;
+                    }
+                    L = L->sig;
+                }
 
+            }
+        }else{
+            printf("Fecha de habilidad que se quiere ingresar es anterior a la ultima fecha de la habilidad ingresada");
+        }
+}
 
+void MostrarTodasLasHabilidades(Lista L)
+{
+    while(L!=NULL)
+    {
+        MostrarHabilidad(L->info);
+        L = L->sig;
+    }
+}

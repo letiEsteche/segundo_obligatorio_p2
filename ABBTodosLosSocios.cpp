@@ -1,4 +1,4 @@
-#include"ABBTodosLosSocios.h"
+#include "ABBTodosLosSocios.h"
 
 void Crear(ABB &a) {
     a = NULL;
@@ -65,6 +65,59 @@ int ContarCuantosSociosNacieronAntesDeFechaDada(ABB a, Fecha f)
             return ContarCuantosSociosNacieronAntesDeFechaDada(a->hder, f) + ContarCuantosSociosNacieronAntesDeFechaDada(a->hizq, f);
     }
 }
+/*
+void IngresarHabilidad(ABB a,Lista &l ,Habilidad h)
+{
+   if(ExisteSocio(a, h.cedula)){
+        if(TieneAlgunaHabilidad(L, h.cedula)){
+            if(ValidarPrimeraFechaSeaMenorOIgualALaSegunda(FechaDeUltimaHabilidadRegistradaPorUnSocio(L, h.cedula), h.ManifestacionHabilidad)){
+                if(L == NULL){//no hay ninguna habilidad en la lista
+                    Lista aux= new NodoHabilidad;
+                    aux->info = h;
+                    aux->sig = NULL;
+                    L = aux;
+
+                }else{
+                    while(L->sig != NULL){//existe al menos una habilidad del socio
+                        if(L->sig->info.cedula == h.cedula){
+                            if(ValidarPrimeraFechaSeaMenorOIgualALaSegunda(FechaDeUltimaHabilidadRegistradaPorUnSocio(L, h.cedula), h.ManifestacionHabilidad))
+                                Lista aux = new NodoHabilidad;
+                                aux->info = h;
+                                aux->sig = L;
+                                L = aux;
+
+                        }
+                        L->sig;
+                    }
+                }
+
+
+            }else{
+                printf("Fecha de habilidad que se quiere ingresar es anterior a la ultima fecha de la habilidad ingresada");
+            }
+        }else{
+
+        }
+
+    }else{
+        printf("La cedula para ingresar habilidad no existe");
+    }
+}
+
+*/
+void IngresarHabilidad(ABB a,Lista &l ,Habilidad h)
+{
+
+}
+
+
+
+
+
+
+
+
+
 
 /*void ListarTodosLosSociosSinHabilidades(ABB a, Lista listaHabilidades)
 {

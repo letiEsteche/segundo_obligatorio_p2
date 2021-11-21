@@ -1,7 +1,7 @@
 #ifndef LISTAHABILIDADESDESOCIO_H_INCLUDED
 #define LISTAHABILIDADESDESOCIO_H_INCLUDED
 #include "Habilidad.h"
-#include "ABBTodosLosSocios.h"
+
 
 //Dada la c�dula m�gica de un socio, listar todas las habilidades correspondientes a dicho
 //socio, ordenadas en forma cronol�gica inversa
@@ -16,17 +16,13 @@ typedef NodoHabilidad*Lista;
 void Crear(Lista &L);
 
 
-void IngresarHabilidad(ABB a,Lista &l);
-
-
 boolean Vacio(Lista L);
 
-boolean TieneAlgunaHabilidad(TipoHabilidad t);
+boolean TieneAlgunaHabilidad(Lista L, long cedula);
 
 void FechaDeUltimaHabilidadRegistradaPorUnSocio(long cedula);
 
 int ContarHabilidadesEntreDosFechasIngresadas(Lista l, TipoHabilidad t);
-
 
 
 //usar en mago mas poderoso
@@ -49,7 +45,8 @@ void ListarHabilidadesDeUnSocio(Lista L, long cedula);
 //que la fecha ingresada sea v�lida.
 void ListarHabilidadesEnUnaFechaDada(Lista L, Fecha f);
 
+void IngresarHabilidad(Lista &L ,Habilidad h);
 
-
+void MostrarTodasLasHabilidades(Lista L);
 
 #endif // LISTAHABILIDADESDESOCIO_H_INCLUDED

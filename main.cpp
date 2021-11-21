@@ -1,9 +1,8 @@
 #include "Menu.h"
 #include "ABBTodosLosSocios.h"
-#include "ListaHabilidadesDeSocio.h"
 
 int main() {
-    ABB a;
+ /*   ABB a;
     Habilidad h;
     TipoHabilidad t;
     Fecha f,p;
@@ -66,7 +65,7 @@ int main() {
         printf("si");
 
     DesplegarTodosLosSocios(a);
-   /* int brujos = 0;
+    int brujos = 0;
     int hadas = 0;
     int hechiceros = 0;
     ContarSociosDeCadaCategoria(a, brujos, hadas, hechiceros);
@@ -93,6 +92,32 @@ int main() {
     printf("Fecha de utlima habilidad registrada");
 //    FechaDeUltimaHabilidadRegistradaPorUnSocio(i);
 
-
 */
+    ABB a;
+    Lista L;
+    Crear(L);
+    Habilidad h1, h2;
+
+    h1.nombreHabilidad = "inteligencia";
+    h1.cedula = 222;
+    h1.ManifestacionHabilidad.anio=1990;
+    h1.ManifestacionHabilidad.mes=12;
+    h1.ManifestacionHabilidad.dia=1;
+    h1.tipo = NATURAL;
+
+    h2.nombreHabilidad= "rapidez";
+    h2.cedula= 111;
+    h2.ManifestacionHabilidad.anio=1991;
+    h2.ManifestacionHabilidad.mes=12;
+    h2.ManifestacionHabilidad.dia=1;
+    h2.tipo = NATURAL;
+
+    IngresarHabilidad(L,h2);
+    IngresarHabilidad(L,h1);
+
+    MostrarTodasLasHabilidades(L);
+
+
+
+
 }

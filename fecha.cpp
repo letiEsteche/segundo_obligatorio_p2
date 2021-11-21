@@ -98,17 +98,17 @@ boolean compararFechas(Fecha a, Fecha b)
     return sonIguales;
 }
 
-boolean ValidarPrimeraFechaSeaMenorALaSegunda(Fecha f, Fecha h)
+boolean ValidarPrimeraFechaSeaMenorOIgualALaSegunda(Fecha f, Fecha h)
 {
     boolean PrimeraFechaMenorASegunda = TRUE;
 
-    if(f.anio > h.anio)
+    if(f.anio >= h.anio)
         PrimeraFechaMenorASegunda = FALSE;
 
-    if(f.mes > h.mes)
+    if(f.mes >= h.mes)
         PrimeraFechaMenorASegunda = FALSE;
 
-    if(f.dia > h.dia)
+    if(f.dia >= h.dia)
         PrimeraFechaMenorASegunda = FALSE;
 
 }
