@@ -58,7 +58,6 @@ void DesplegarTodosLosSocios(ABB a);
 //caso de que no haya ninguno, emitir un mensaje que as� lo indique.
 void ListarSocioConMasHabilidades(ABB a); //VER
 
-//void IngresarHabilidad(ABB a,Lista &l, Habilidad h);
 
 
 

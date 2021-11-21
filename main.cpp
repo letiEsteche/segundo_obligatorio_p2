@@ -98,6 +98,24 @@ int main() {
     Crear(L);
     Habilidad h1, h2;
 
+
+
+    h2.nombreHabilidad= "rapidez";
+    h2.cedula= 222;
+    h2.ManifestacionHabilidad.anio=1991;
+    h2.ManifestacionHabilidad.mes=12;
+    h2.ManifestacionHabilidad.dia=1;
+    h2.tipo = NATURAL;
+
+    IngresarHabilidad(L,h1);
+    IngresarHabilidad(L,h2);
+
+    MostrarTodasLasHabilidades(L);
+
+
+    //el socio ingresado existe
+    long cedula = 111;
+
     h1.nombreHabilidad = "inteligencia";
     h1.cedula = 222;
     h1.ManifestacionHabilidad.anio=1990;
@@ -105,19 +123,26 @@ int main() {
     h1.ManifestacionHabilidad.dia=1;
     h1.tipo = NATURAL;
 
-    h2.nombreHabilidad= "rapidez";
-    h2.cedula= 111;
-    h2.ManifestacionHabilidad.anio=1991;
-    h2.ManifestacionHabilidad.mes=12;
-    h2.ManifestacionHabilidad.dia=1;
-    h2.tipo = NATURAL;
+    if(ExisteSocio(a, h1.cedula)) {
+        if(L == NULL){//no hay ninguna habilidad en la lista
+            Lista aux= new NodoHabilidad;
+            aux->info = h1;
+            aux->sig = NULL;
+            L = aux;
+        }else{
+            if(TieneAlgunaHabilidad(L, h1.cedula)) {
+                if(ValidarPrimeraFechaSeaMenorOIgualALaSegunda(FechaDeUltimaHabilidadRegistradaPorUnSocio(L, cedula), h1.ManifestacionHabilidad)) {
+                    IngresarHabilidad(L, h1.cedula);
+                }else
+                    printf("La fecha de la habilidad que quiere ingresaar es anterior a la ultima habilidad registrada");
 
-    IngresarHabilidad(L,h2);
-    IngresarHabilidad(L,h1);
+            }else{
+                   IngrearPrimeraHabilidad(L, h1);
+                }
+        }
 
-    MostrarTodasLasHabilidades(L);
-
-
-
+    }else{
+        printf("El socio no existe en el sistema");
+    }
 
 }

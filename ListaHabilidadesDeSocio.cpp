@@ -52,10 +52,13 @@ boolean Vacio(Lista L)
         es = TRUE;
     return es;
 }
+void IngrearPrimeraHabilidad(Lista &L, Habilidad h)
+{
+
+}
 
 void IngresarHabilidad(Lista &L ,Habilidad h)
 {
-    if(ValidarPrimeraFechaSeaMenorOIgualALaSegunda(FechaDeUltimaHabilidadRegistradaPorUnSocio(L, h.cedula), h.ManifestacionHabilidad)){
         if(L == NULL){//no hay ninguna habilidad en la lista
             Lista aux= new NodoHabilidad;
             aux->info = h;
@@ -63,20 +66,14 @@ void IngresarHabilidad(Lista &L ,Habilidad h)
             L = aux;
 
         }else{
-            while(L->sig != NULL){//existe al menos una habilidad del socio
-                    if(ValidarPrimeraFechaSeaMenorOIgualALaSegunda(FechaDeUltimaHabilidadRegistradaPorUnSocio(L, h.cedula), h.ManifestacionHabilidad)){
-                        Lista aux = new NodoHabilidad;
-                        aux->info = h;
-                        aux->sig = L;
-                        L = aux;
-                    }
-                    L = L->sig;
-                }
+            while(L ->sig == NULL){//existe al menos una habilidad del socio
+                    Lista aux = new NodoHabilidad;
+                    aux->info = h;
+                    aux->sig = L;
+                    L = aux;
 
-            }
-        }else{
-            printf("Fecha de habilidad que se quiere ingresar es anterior a la ultima fecha de la habilidad ingresada");
-        }
+            L = L->sig;}
+                }
 }
 
 void MostrarTodasLasHabilidades(Lista L)
