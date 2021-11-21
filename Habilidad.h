@@ -24,6 +24,8 @@ long DarCedulaHabilidad(Habilidad h);
 
 TipoHabilidad DarTipoDeHabilidad(Habilidad h);
 
+
+
 //cargar mostrar y selectoras
 
 #endif // HABILIDAD_H_INCLUDED

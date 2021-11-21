@@ -3,9 +3,8 @@
 #include "Habilidad.h"
 #include "ABBTodosLosSocios.h"
 
-
-//Dada la cédula mágica de un socio, listar todas las habilidades correspondientes a dicho
-//socio, ordenadas en forma cronológica inversa
+//Dada la cï¿½dula mï¿½gica de un socio, listar todas las habilidades correspondientes a dicho
+//socio, ordenadas en forma cronolï¿½gica inversa
 
 typedef struct nodo_HabilidadesDeSocio{
                                         Habilidad info;
@@ -17,7 +16,7 @@ typedef NodoHabilidad*Lista;
 void Crear(Lista &L);
 
 
-void IngresarHabilidad(Lista &L, Habilidad h);
+void IngresarHabilidad(ABB a,Lista &l);
 
 
 boolean Vacio(Lista L);
@@ -26,27 +25,28 @@ boolean TieneAlgunaHabilidad(TipoHabilidad t);
 
 void FechaDeUltimaHabilidadRegistradaPorUnSocio(long cedula);
 
-int ContarHabilidadesEntreDosFechasIngresadas(Lista L, TipoHabilidad t);
+int ContarHabilidadesEntreDosFechasIngresadas(Lista l, TipoHabilidad t);
+
 
 
 //usar en mago mas poderoso
 int CantidadDeHabilidadesPorCedula(Lista L, long cedula);
 
-//Contar cuántas habilidades de cada tipo (naturales, poco naturales y sobrenaturales) hay
+//Contar cuï¿½ntas habilidades de cada tipo (naturales, poco naturales y sobrenaturales) hay
 //registradas en el sistema.
 void CantidadHabilidadDeCadaTipo(Lista L, int &n, int &p, int &s);
 
-//Dada la cédula mágica de un socio, listar todas las habilidades correspondientes a dicho
-//socio, ordenadas en forma cronológica inversa (desde las más recientes hacia las más
-//antiguas). Los datos de una misma habilidad (nombre, fecha de manifestación, cédula mágica
-//del socio y tipo de habilidad) deberán listarse todos en una misma línea. Se debe verificar
+//Dada la cï¿½dula mï¿½gica de un socio, listar todas las habilidades correspondientes a dicho
+//socio, ordenadas en forma cronolï¿½gica inversa (desde las mï¿½s recientes hacia las mï¿½s
+//antiguas). Los datos de una misma habilidad (nombre, fecha de manifestaciï¿½n, cï¿½dula mï¿½gica
+//del socio y tipo de habilidad) deberï¿½n listarse todos en una misma lï¿½nea. Se debe verificar
 //previamente que el socio correspondiente exista en el sistema.
 void ListarHabilidadesDeUnSocio(Lista L, long cedula);
 
 //Dada una fecha, listar todas las habilidades que hayan sido manifestadas en dicha fecha.
-//Los datos de una misma habilidad (nombre, fecha de manifestación, cédula mágica del socio
-//y tipo de habilidad) deberán listarse todos en una misma línea. Se debe verificar previamente
-//que la fecha ingresada sea válida.
+//Los datos de una misma habilidad (nombre, fecha de manifestaciï¿½n, cï¿½dula mï¿½gica del socio
+//y tipo de habilidad) deberï¿½n listarse todos en una misma lï¿½nea. Se debe verificar previamente
+//que la fecha ingresada sea vï¿½lida.
 void ListarHabilidadesEnUnaFechaDada(Lista L, Fecha f);
 
 

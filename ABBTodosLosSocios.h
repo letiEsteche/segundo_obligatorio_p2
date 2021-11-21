@@ -1,56 +1,62 @@
 #ifndef ABBTODOSLOSSOCIOS_H_INCLUDED
 #define ABBTODOSLOSSOCIOS_H_INCLUDED
+
 #include "Mago.h"
 #include "ListaHabilidadesDeSocio.h"
 
 //ABB de todos los socios ordenar por cedula de menor a mayor
-typedef struct nodo_TodosLosSocios{
-                                    Mago info;
-                                    nodo_TodosLosSocios*hizq;
-                                    nodo_TodosLosSocios*hder;
-                                    }NodoSocio;
-typedef NodoSocio * ABB;
+typedef struct nodo_TodosLosSocios {
+    Mago info;
+    nodo_TodosLosSocios *hizq;
+    nodo_TodosLosSocios *hder;
+} NodoSocio;
+typedef NodoSocio *ABB;
 
-/* crear un árbol vacío */
-void Crear (ABB &a);
+/* crear un ï¿½rbol vacï¿½o */
+void Crear(ABB &a);
 
 /* insertar un nuevo valor en el ABB */
-/* precondición: el valor no existía previamente en el ABB */
-void InsertarSocio (ABB &a, Mago m);
+/* precondiciï¿½n: el valor no existï¿½a previamente en el ABB */
+void InsertarSocio(ABB &a, Mago m);
 
-/* saber si un elemento pertenece al ABB, versión recursiva */
-boolean ExisteSocio (ABB a, long cedula);
+/* saber si un elemento pertenece al ABB, versiï¿½n recursiva */
+boolean ExisteSocio(ABB a, long cedula);
 
-int ContarCantidadDeBrujos(ABB a,int b);
+
+int ContarCantidadDeBrujos(ABB a, int b);
 
 int ContarCantidadDeHadas(ABB a, int h);
 
 int ContarCantidadDeHechiceros(ABB a, int ch);
 
-void ContarSociosDeCadaCategoria(ABB a);
+void ContarSociosDeCadaCategoria(ABB a, int &countBrujos, int &countHadas, int &countHechiceros);
 
-//Dada una fecha de nacimiento, contar cuántos de los socios registrados en el sistema nacieron
-//antes de dicha fecha. Se debe verificar previamente que la fecha ingresada sea válida.
+//Dada una fecha de nacimiento, contar cuï¿½ntos de los socios registrados en el sistema nacieron
+//antes de dicha fecha. Se debe verificar previamente que la fecha ingresada sea vï¿½lida.
 int ContarCuantosSociosNacieronAntesDeFechaDada(ABB a, Fecha f);
 
+//Dadas dos fechas, contar cuï¿½ntas habilidades fueron ingresadas dentro de dicho rango de
+//fechas (incluidas ambas fechas). Se debe verificar previamente que ambas fechas ingresadas
+//sean vï¿½lidas y que la primera fecha sea menor o igual que la segunda.
+int ContarCuantosSociosNacieronAntesDeFechaDada(ABB a, Fecha f);
 
-//Listar todos los socios registrados en el sistema, ordenados por cédula de menor a mayor.
-//Los datos de un mismo socio (cédula mágica, nombre, fecha de nacimiento, dimensión de
-//origen y categoría mágica) deberán listarse todos en una misma línea
+//Listar todos los socios registrados en el sistema, ordenados por cï¿½dula de menor a mayor.
+//Los datos de un mismo socio (cï¿½dula mï¿½gica, nombre, fecha de nacimiento, dimensiï¿½n de
+//origen y categorï¿½a mï¿½gica) deberï¿½n listarse todos en una misma lï¿½nea
 //recorrer en orden
-void DesplegarTodosLosSocios (ABB a);
+void DesplegarTodosLosSocios(ABB a);
 
-//Listar todos aquellos socios registrados en el sistema que aún no han manifestado ninguna
-//habilidad, ordenados por cédula de menor a mayor. Los datos de un mismo socio (cédula
-//mágica, nombre, fecha de nacimiento, dimensión de origen y categoría mágica) deberán
-//listarse todos en una misma línea.
-void ListarTodosLosSociosSinHabilidades(ABB a);
+//Listar todos aquellos socios registrados en el sistema que aï¿½n no han manifestado ninguna
+//habilidad, ordenados por cï¿½dula de menor a mayor. Los datos de un mismo socio (cï¿½dula
+//mï¿½gica, nombre, fecha de nacimiento, dimensiï¿½n de origen y categorï¿½a mï¿½gica) deberï¿½n
+//listarse todos en una misma lï¿½nea.
+//void ListarTodosLosSociosSinHabilidades(ABB a, Lista listaHabilidades);
 
-//Listar los datos del socio más poderoso registrado en el sistema. Es decir, del socio que ha
+//Listar los datos del socio mï¿½s poderoso registrado en el sistema. Es decir, del socio que ha
 //manifestado la mayor cantidad de habilidades sobrenaturales de entre todos los socios
 //registrados. En caso de que haya varios, basta con devolver uno cualquiera de ellos. En
-//caso de que no haya ninguno, emitir un mensaje que así lo indique.
-void ListarSocioConMasHabilidades(ABB a);
+//caso de que no haya ninguno, emitir un mensaje que asï¿½ lo indique.
+void ListarSocioConMasHabilidades(ABB a); //VER
 
 
 

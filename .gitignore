@@ -3,3 +3,8 @@ obj/
 Obligatorio2.cbp
 Obligatorio2.depend
 Obligatorio2.layout
+
+.idea/
+CMakeLists.txt
+cmake-build-debug/
+
