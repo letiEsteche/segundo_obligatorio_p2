@@ -83,27 +83,3 @@ int ContarHabilidadesEntreDosFechasIngresadas(Lista L, Fecha desde, Fecha hasta)
 
 
 
-// ------------------------------------------------------------ TEST
-
-void AgregarHabilidadALaListaRecursiva(Lista &habilidades, Habilidad h) {
-    Lista nodoActual = habilidades;
-    boolean seAgregoHabilidad = FALSE;
-    while (nodoActual->sig != NULL && !seAgregoHabilidad) {
-        if (PrimeraFechaPosteriorOIgualALaSegunda(h.ManifestacionHabilidad, nodoActual->sig->info.ManifestacionHabilidad)) {
-            Lista aux = new NodoHabilidad;
-            aux->info = h;
-            aux->sig = nodoActual->sig;
-            nodoActual->sig = aux;
-            seAgregoHabilidad = TRUE;
-        }
-        nodoActual = nodoActual->sig;
-    }
-    if (!seAgregoHabilidad) {
-        Lista aux = new NodoHabilidad;
-        aux->info = h;
-        aux->sig = NULL;
-        nodoActual->sig = aux;
-    }
-}
-
-

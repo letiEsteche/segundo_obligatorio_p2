@@ -19,6 +19,7 @@ boolean ListaVacia(Lista L);
 void IngresarPrimeraHabilidad(Lista &habilidades, Habilidad h);
 
 boolean TieneAlgunaHabilidad(Lista L, long cedula);
+// precondicion fecha y ver si lista esta vacia
 
 Fecha FechaDeUltimaHabilidadRegistradaPorUnSocio(Lista L, long cedula);
 
