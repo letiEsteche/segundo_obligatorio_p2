@@ -33,7 +33,7 @@ Fecha FechaDeUltimaHabilidadRegistradaPorUnSocio(Lista L, long cedula) {
     while (L != NULL && !encontre) {
         if (L->info.cedula == cedula) {
             aux = L->info.ManifestacionHabilidad;
-            encontre == TRUE;
+            encontre = TRUE;
         }
         L = L->sig;
     }
