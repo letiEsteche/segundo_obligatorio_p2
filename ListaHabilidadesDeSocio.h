@@ -1,26 +1,41 @@
 #ifndef LISTAHABILIDADESDESOCIO_H_INCLUDED
 #define LISTAHABILIDADESDESOCIO_H_INCLUDED
+
 #include "Habilidad.h"
 
+typedef struct HabilidadesDeSocioStruct {
+    Habilidad info;
+    HabilidadesDeSocioStruct *sig;
+} NodoHabilidad;
 
-//Dada la c�dula m�gica de un socio, listar todas las habilidades correspondientes a dicho
-//socio, ordenadas en forma cronol�gica inversa
+typedef NodoHabilidad *Lista;
 
-typedef struct nodo_HabilidadesDeSocio{
-                                        Habilidad info;
-                                        nodo_HabilidadesDeSocio*sig;
-                                        } NodoHabilidad;
-typedef NodoHabilidad*Lista;
-
+// ------------------------------------------------ Funciones y procedimientos
 
 void Crear(Lista &L);
 
+boolean ListaVacia(Lista L);
 
-boolean Vacio(Lista L);
+void IngresarPrimeraHabilidad(Lista &habilidades, Habilidad h);
 
 boolean TieneAlgunaHabilidad(Lista L, long cedula);
 
-void FechaDeUltimaHabilidadRegistradaPorUnSocio(long cedula);
+Fecha FechaDeUltimaHabilidadRegistradaPorUnSocio(Lista L, long cedula);
+
+void IngresarHabilidad(Lista &habilidades, Habilidad h);
+
+void AgregarHabilidadALaLista(Lista &habilidades, Habilidad h);
+
+void MostrarTodasLasHabilidades(Lista lista);
+
+
+
+
+
+
+
+// ------------------------------------------------
+
 
 int ContarHabilidadesEntreDosFechasIngresadas(Lista l, TipoHabilidad t);
 
@@ -45,8 +60,5 @@ void ListarHabilidadesDeUnSocio(Lista L, long cedula);
 //que la fecha ingresada sea v�lida.
 void ListarHabilidadesEnUnaFechaDada(Lista L, Fecha f);
 
-void IngresarHabilidad(Lista &L ,Habilidad h);
-
-void MostrarTodasLasHabilidades(Lista L);
 
 #endif // LISTAHABILIDADESDESOCIO_H_INCLUDED

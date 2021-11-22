@@ -1,8 +1,7 @@
 #include "fecha.h"
 
-void cargarFecha(Fecha &fecha)
-{
-  boolean fechaValida = FALSE;
+void cargarFecha(Fecha &fecha) {
+    boolean fechaValida = FALSE;
 
     do {
         printf("\nIngrese el dia de la fecha:");
@@ -23,15 +22,11 @@ void cargarFecha(Fecha &fecha)
     } while (fechaValida == FALSE);
 }
 
-
-
-void mostrarFecha(Fecha fecha)
-{
-     printf("%i/%i/%i", fecha.dia, fecha.mes, fecha.anio);
+void mostrarFecha(Fecha fecha) {
+    printf("%i/%i/%i", fecha.dia, fecha.mes, fecha.anio);
 }
 
-boolean validarFecha(Fecha fecha)
-{
+boolean validarFecha(Fecha fecha) {
     int dia = fecha.dia;
     int mes = fecha.mes;
     int anio = fecha.anio;
@@ -79,9 +74,8 @@ boolean validarFecha(Fecha fecha)
     return fechaCorrecta;
 }
 
-boolean compararFechas(Fecha a, Fecha b)
-{
-     boolean sonIguales = TRUE;
+boolean compararFechas(Fecha a, Fecha b) {
+    boolean sonIguales = TRUE;
 
     if (a.anio != b.anio) {
         sonIguales = FALSE;
@@ -98,17 +92,37 @@ boolean compararFechas(Fecha a, Fecha b)
     return sonIguales;
 }
 
-boolean ValidarPrimeraFechaSeaMenorOIgualALaSegunda(Fecha f, Fecha h)
-{
-    boolean PrimeraFechaMenorASegunda = TRUE;
+boolean PrimeraFechaAnteriorOIgualALaSegunda(Fecha f, Fecha h) {
+    boolean primeraFechaMenorASegunda = TRUE;
 
-    if(f.anio >= h.anio)
-        PrimeraFechaMenorASegunda = FALSE;
+    if (f.anio > h.anio) {
+        primeraFechaMenorASegunda = FALSE;
+    } else if (f.anio == h.anio) {
+        if (f.mes > h.mes) {
+            primeraFechaMenorASegunda = FALSE;
+        } else if (f.mes == h.mes) {
+            if (f.dia > h.dia) {
+                primeraFechaMenorASegunda = FALSE;
+            }
+        }
+    }
 
-    if(f.mes >= h.mes)
-        PrimeraFechaMenorASegunda = FALSE;
+    return primeraFechaMenorASegunda;
+}
 
-    if(f.dia >= h.dia)
-        PrimeraFechaMenorASegunda = FALSE;
+boolean PrimeraFechaPosteriorOIgualALaSegunda(Fecha f, Fecha h) {
+    boolean primeraFechaMenorASegunda = TRUE;
 
+    if (f.anio < h.anio) {
+        primeraFechaMenorASegunda = FALSE;
+    } else if (f.anio == h.anio) {
+        if (f.mes < h.mes) {
+            primeraFechaMenorASegunda = FALSE;
+        } else if (f.mes == h.mes) {
+            if (f.dia < h.dia) {
+                primeraFechaMenorASegunda = FALSE;
+            }
+        }
+    }
+    return primeraFechaMenorASegunda;
 }

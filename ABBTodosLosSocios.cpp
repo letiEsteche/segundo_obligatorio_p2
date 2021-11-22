@@ -105,10 +105,6 @@ void IngresarHabilidad(ABB a,Lista &l ,Habilidad h)
 }
 
 */
-void IngresarHabilidad(ABB a,Lista &l ,Habilidad h)
-{
-
-}
 
 
 

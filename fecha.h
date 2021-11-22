@@ -16,6 +16,8 @@ boolean validarFecha(Fecha fecha);
 
 boolean compararFechas(Fecha a, Fecha b);
 
-boolean ValidarPrimeraFechaSeaMenorOIgualALaSegunda(Fecha f, Fecha h);
+boolean PrimeraFechaAnteriorOIgualALaSegunda(Fecha f, Fecha h);
+
+boolean PrimeraFechaPosteriorOIgualALaSegunda(Fecha f, Fecha h);
 
 #endif // FECHA_H_INCLUDED
