@@ -73,7 +73,7 @@ void IngresarHabilidad(Lista &L ,Habilidad h)
                     L = aux;
 
             L = L->sig;}
-                }
+        }
 }
 
 void MostrarTodasLasHabilidades(Lista L)

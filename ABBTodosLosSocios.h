@@ -22,12 +22,11 @@ void InsertarSocio(ABB &a, Mago m);
 /* saber si un elemento pertenece al ABB, versi�n recursiva */
 boolean ExisteSocio(ABB a, long cedula);
 
-
-int ContarCantidadDeBrujos(ABB a, int b);
-
-int ContarCantidadDeHadas(ABB a, int h);
-
-int ContarCantidadDeHechiceros(ABB a, int ch);
+//Listar todos los socios registrados en el sistema, ordenados por c�dula de menor a mayor.
+//Los datos de un mismo socio (c�dula m�gica, nombre, fecha de nacimiento, dimensi�n de
+//origen y categor�a m�gica) deber�n listarse todos en una misma l�nea
+//recorrer en orden
+void DesplegarTodosLosSocios(ABB a);
 
 void ContarSociosDeCadaCategoria(ABB a, int &countBrujos, int &countHadas, int &countHechiceros);
 
@@ -40,11 +39,7 @@ int ContarCuantosSociosNacieronAntesDeFechaDada(ABB a, Fecha f);
 //sean v�lidas y que la primera fecha sea menor o igual que la segunda.
 int ContarCuantosSociosNacieronAntesDeFechaDada(ABB a, Fecha f);
 
-//Listar todos los socios registrados en el sistema, ordenados por c�dula de menor a mayor.
-//Los datos de un mismo socio (c�dula m�gica, nombre, fecha de nacimiento, dimensi�n de
-//origen y categor�a m�gica) deber�n listarse todos en una misma l�nea
-//recorrer en orden
-void DesplegarTodosLosSocios(ABB a);
+
 
 //Listar todos aquellos socios registrados en el sistema que a�n no han manifestado ninguna
 //habilidad, ordenados por c�dula de menor a mayor. Los datos de un mismo socio (c�dula
