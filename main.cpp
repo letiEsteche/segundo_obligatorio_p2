@@ -121,23 +121,23 @@ int main() {
     h1.cedula = 222;
     h1.ManifestacionHabilidad.anio = 1500;
     h1.ManifestacionHabilidad.mes = 12;
-    h1.ManifestacionHabilidad.dia = 7;
-    h1.tipo = NATURAL;
+    h1.ManifestacionHabilidad.dia = 3;
+    h1.tipo = POCONATURAL;
 
     Habilidad h2;
     h2.nombreHabilidad = "Rapidez";
     h2.cedula = 222;
     h2.ManifestacionHabilidad.anio = 1500;
     h2.ManifestacionHabilidad.mes = 12;
-    h2.ManifestacionHabilidad.dia = 10;
-    h2.tipo = NATURAL;
+    h2.ManifestacionHabilidad.dia = 4;
+    h2.tipo = SOBRENATURAL;
 
     Habilidad h3;
     h3.nombreHabilidad = "Invisibilidad";
     h3.cedula = 222;
     h3.ManifestacionHabilidad.anio = 1500;
     h3.ManifestacionHabilidad.mes = 12;
-    h3.ManifestacionHabilidad.dia = 10;
+    h3.ManifestacionHabilidad.dia = 5;
     h3.tipo = NATURAL;
 
     Habilidad h4;
@@ -145,7 +145,7 @@ int main() {
     h4.cedula = 222;
     h4.ManifestacionHabilidad.anio = 1500;
     h4.ManifestacionHabilidad.mes = 12;
-    h4.ManifestacionHabilidad.dia = 11;
+    h4.ManifestacionHabilidad.dia = 6;
     h4.tipo = NATURAL;
 
     Habilidad h5;
@@ -153,7 +153,7 @@ int main() {
     h5.cedula = 111;
     h5.ManifestacionHabilidad.anio = 1500;
     h5.ManifestacionHabilidad.mes = 12;
-    h5.ManifestacionHabilidad.dia = 4;
+    h5.ManifestacionHabilidad.dia = 7;
     h5.tipo = NATURAL;
 
     Habilidad h6;
@@ -169,40 +169,37 @@ int main() {
     printf("\n\n\n");
 
     if (ExisteSocio(socios, h1.cedula)) {
-        IngresarHabilidad(habilidades, h1);
+        if (ListaVacia(habilidades)) {
+            IngresarPrimeraHabilidad(habilidades, h1);
+        } else {
+            if (PrimeraFechaPosteriorOIgualALaSegunda(DarFechaDeManifestacionHabilidad(h1), DarFechaDeManifestacionHabilidad(habilidades->info))) {
+                IngresarHabilidad(habilidades, h1);
+            } else {
+                printf("La fecha de la habilidad ingresada es anterior a la ultima habilidad\n");
+            }
+        }
     } else {
         printf("No existe ningun usuario en el sistema que contenga la cedula introducia en la habilidad\n");
     }
 
     if (ExisteSocio(socios, h2.cedula)) {
-        IngresarHabilidad(habilidades, h2);
+        if (ListaVacia(habilidades)) {
+            IngresarPrimeraHabilidad(habilidades, h2);
+        } else {
+            if (PrimeraFechaPosteriorOIgualALaSegunda(DarFechaDeManifestacionHabilidad(h2), DarFechaDeManifestacionHabilidad(habilidades->info))) {
+                IngresarHabilidad(habilidades, h2);
+            } else {
+                printf("La fecha de la habilidad ingresada es anterior a la ultima habilidad\n");
+            }
+        }
     } else {
         printf("No existe ningun usuario en el sistema que contenga la cedula introducia en la habilidad\n");
     }
 
-    if (ExisteSocio(socios, h3.cedula)) {
-        IngresarHabilidad(habilidades, h3);
-    } else {
-        printf("No existe ningun usuario en el sistema que contenga la cedula introducia en la habilidad\n");
-    }
-
-    if (ExisteSocio(socios, h4.cedula)) {
-        IngresarHabilidad(habilidades, h4);
-    } else {
-        printf("No existe ningun usuario en el sistema que contenga la cedula introducia en la habilidad\n");
-    }
-
-    if (ExisteSocio(socios, h5.cedula)) {
-        IngresarHabilidad(habilidades, h5);
-    } else {
-        printf("No existe ningun usuario en el sistema que contenga la cedula introducia en la habilidad\n");
-    }
-
-    if (ExisteSocio(socios, h6.cedula)) {
-        IngresarHabilidad(habilidades, h6);
-    } else {
-        printf("No existe ningun usuario en el sistema que contenga la cedula introducia en la habilidad\n");
-    }
+    IngresarHabilidad(habilidades, h3);
+    IngresarHabilidad(habilidades, h4);
+    IngresarHabilidad(habilidades, h5);
+    IngresarHabilidad(habilidades, h6);
 
     MostrarTodasLasHabilidades(habilidades);
 
@@ -222,8 +219,21 @@ int main() {
 //        printf("No");
 //    }
 
+    // ------------------------------------------------ Habilidades por tipo
 
+    int naturales = 0;
+    int pocoNaturales = 0;
+    int sobreNaturales = 0;
+    CantidadHabilidadDeCadaTipo(habilidades, naturales, pocoNaturales, sobreNaturales);
+    printf("\n\nCantidad de habilidades por tipo:");
+    printf("\nNaturales: %d \nPoco naturales: %d \nSobre naturales: %d", naturales, pocoNaturales, sobreNaturales);
 
+    // ------------------------------------------------ Cantidad habilidades entre dos fechas
+
+    Fecha desde = {7, 12, 1500};
+    Fecha hasta = {5, 12, 1500};
+    int cantidadDeHabilidades = ContarHabilidadesEntreDosFechasIngresadas(habilidades, desde, hasta);
+    printf("\nLa cantidad de habilidades entre las dos fechas es: %d", cantidadDeHabilidades);
 
 
 }

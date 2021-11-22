@@ -41,41 +41,10 @@ Fecha FechaDeUltimaHabilidadRegistradaPorUnSocio(Lista L, long cedula) {
 }
 
 void IngresarHabilidad(Lista &habilidades, Habilidad h) {
-    if (ListaVacia(habilidades)) {
-        IngresarPrimeraHabilidad(habilidades, h);
-    } else {
-        if (PrimeraFechaPosteriorOIgualALaSegunda(h.ManifestacionHabilidad, habilidades->info.ManifestacionHabilidad)) {
-            Lista aux = new NodoHabilidad;
-            aux->info = h;
-            aux->sig = habilidades;
-            habilidades = aux;
-        } else if (TieneAlgunaHabilidad(habilidades, h.cedula)) {
-            if (PrimeraFechaAnteriorOIgualALaSegunda(FechaDeUltimaHabilidadRegistradaPorUnSocio(habilidades, h.cedula),h.ManifestacionHabilidad)) {
-                AgregarHabilidadALaLista(habilidades, h);
-            } else {
-                printf("La fecha de la habilidad ha ingresar es anterior la de la ultima habilidad registrada por este usuario");
-            }
-        } else {
-            AgregarHabilidadALaLista(habilidades, h);
-        }
-
-    }
-}
-
-void AgregarHabilidadALaLista(Lista &habilidades, Habilidad h) {
-    if (habilidades->sig == NULL) {
-        Lista aux1 = new NodoHabilidad;
-        aux1->info = h;
-        aux1->sig = NULL;
-        habilidades->sig = aux1;
-    } else if (PrimeraFechaPosteriorOIgualALaSegunda(h.ManifestacionHabilidad, habilidades->sig->info.ManifestacionHabilidad)) {
-        Lista aux2 = new NodoHabilidad;
-        aux2->info = h;
-        aux2->sig = habilidades->sig;
-        habilidades->sig = aux2;
-    } else {
-        AgregarHabilidadALaLista(habilidades->sig, h);
-    }
+    Lista aux = new NodoHabilidad;
+    aux->info = h;
+    aux->sig = habilidades;
+    habilidades = aux;
 }
 
 void MostrarTodasLasHabilidades(Lista lista) {
@@ -85,29 +54,34 @@ void MostrarTodasLasHabilidades(Lista lista) {
     }
 }
 
-
-
-
-
-
-
-// ------------------------------------------------
-
-
-int ContarHabilidadesEntreDosFechasIngresadas(Lista L, TipoHabilidad t)
-{
-    Fecha f, h;
-    if(t == NULL)
-        return 0;
-    else{
-        if(PrimeraFechaAnteriorOIgualALaSegunda(f, h)){
-            if(L->info.tipo == 'NATURAL' || L->info.tipo == 'POCONATURAL' || L->info.tipo == 'SOBRENATURAL')
-                return 1 + ContarHabilidadesEntreDosFechasIngresadas(L->sig, t);
-
-        }else
-            return ContarHabilidadesEntreDosFechasIngresadas(L->sig, t);
+void CantidadHabilidadDeCadaTipo(Lista L, int &n, int &p, int &s) {
+    while (L != NULL) {
+        if (L->info.tipo == NATURAL) {
+            n++;
+        } else if (L->info.tipo == POCONATURAL) {
+            p++;
+        } else if (L->info.tipo == SOBRENATURAL) {
+            s++;
+        }
+        L = L->sig;
     }
 }
+
+int ContarHabilidadesEntreDosFechasIngresadas(Lista L, Fecha desde, Fecha hasta)
+{
+    int contador = 0;
+    while (L != NULL) {
+        if (PrimeraFechaPosteriorOIgualALaSegunda(desde, hasta)) {
+            contador++;
+        }
+        L = L->sig;
+    }
+}
+
+
+
+
+
 
 // ------------------------------------------------------------ TEST
 
