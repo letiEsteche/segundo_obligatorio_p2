@@ -169,10 +169,33 @@ int main() {
     printf("\n\n\n");
 
     if (ExisteSocio(socios, h1.cedula)) {
-        IngresarHabilidad(habilidades, h1);
-    } else {
-        printf("No existe ningun usuario en el sistema que contenga la cedula introducia en la habilidad\n");
-    }
+        if (ListaVacia(habilidades)) {
+            IngresarPrimeraHabilidad(habilidades, h);
+        } else {
+            if (PrimeraFechaPosteriorOIgualALaSegunda(h.ManifestacionHabilidad, habilidades->info.ManifestacionHabilidad)) {
+                Lista aux = new NodoHabilidad;
+                aux->info = h;
+                aux->sig = habilidades;
+                habilidades = aux;
+            } else if (TieneAlgunaHabilidad(habilidades, h.cedula)) {
+                if (PrimeraFechaAnteriorOIgualALaSegunda(FechaDeUltimaHabilidadRegistradaPorUnSocio(habilidades, h.cedula),h.ManifestacionHabilidad)) {
+                    AgregarHabilidadALaLista(habilidades, h);
+                } else {
+                    printf("La fecha de la habilidad ha ingresar es anterior la de la ultima habilidad registrada por este usuario");
+                }
+            } else {
+                AgregarHabilidadALaLista(habilidades, h);
+            }
+
+        }
+        } else {
+            printf("No existe ningun usuario en el sistema que contenga la cedula introducia en la habilidad\n");
+        }
+
+
+
+
+
 
     if (ExisteSocio(socios, h2.cedula)) {
         IngresarHabilidad(habilidades, h2);
@@ -205,6 +228,13 @@ int main() {
     }
 
     MostrarTodasLasHabilidades(habilidades);
+
+
+
+
+
+
+
 
     // ------------------------------------------------ Tiene alguna habilidad
 
