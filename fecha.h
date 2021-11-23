@@ -20,4 +20,6 @@ boolean PrimeraFechaAnteriorOIgualALaSegunda(Fecha f, Fecha h);
 
 boolean PrimeraFechaPosteriorOIgualALaSegunda(Fecha f, Fecha h);
 
+boolean FechaIngresadaMayorOigualALaUltimaFechaDeManifestacion(Fecha f, Fecha h);
+
 #endif // FECHA_H_INCLUDED

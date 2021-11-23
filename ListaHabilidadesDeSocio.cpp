@@ -40,11 +40,20 @@ Fecha FechaDeUltimaHabilidadRegistradaPorUnSocio(Lista L, long cedula) {
     return aux;
 }
 
-void IngresarHabilidad(Lista &habilidades, Habilidad h) {
-    Lista aux = new NodoHabilidad;
-    aux->info = h;
-    aux->sig = habilidades;
-    habilidades = aux;
+
+
+void AgregarHabilidadALaLista(Lista &habilidades, Habilidad h) {
+    if (habilidades == NULL) {
+        Lista aux1 = new NodoHabilidad;
+        aux1->info = h;
+        aux1->sig = NULL;
+        habilidades->sig = aux1;
+    } else if (FechaIngresadaMayorOigualALaUltimaFechaDeManifestacion(h.ManifestacionHabilidad, habilidades->info.ManifestacionHabilidad)) {
+        Lista aux2 = new NodoHabilidad;
+        aux2->info = h;
+        aux2->sig = habilidades;
+        habilidades = aux2;
+    }
 }
 
 void MostrarTodasLasHabilidades(Lista lista) {
@@ -54,32 +63,27 @@ void MostrarTodasLasHabilidades(Lista lista) {
     }
 }
 
-void CantidadHabilidadDeCadaTipo(Lista L, int &n, int &p, int &s) {
-    while (L != NULL) {
-        if (L->info.tipo == NATURAL) {
-            n++;
-        } else if (L->info.tipo == POCONATURAL) {
-            p++;
-        } else if (L->info.tipo == SOBRENATURAL) {
-            s++;
-        }
-        L = L->sig;
-    }
-}
 
-int ContarHabilidadesEntreDosFechasIngresadas(Lista L, Fecha desde, Fecha hasta)
+
+
+
+
+
+// ------------------------------------------------
+
+
+int ContarHabilidadesEntreDosFechasIngresadas(Lista L, TipoHabilidad t)
 {
-    int contador = 0;
-    while (L != NULL) {
-        if (PrimeraFechaPosteriorOIgualALaSegunda(desde, hasta)) {
-            contador++;
-        }
-        L = L->sig;
+    Fecha f, h;
+    if(t == NULL)
+        return 0;
+    else{
+        if(PrimeraFechaAnteriorOIgualALaSegunda(f, h)){
+            if(L->info.tipo == 'NATURAL' || L->info.tipo == 'POCONATURAL' || L->info.tipo == 'SOBRENATURAL')
+                return 1 + ContarHabilidadesEntreDosFechasIngresadas(L->sig, t);
+
+        }else
+            return ContarHabilidadesEntreDosFechasIngresadas(L->sig, t);
     }
 }
-
-
-
-
-
 

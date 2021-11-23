@@ -45,7 +45,7 @@ int ContarCuantosSociosNacieronAntesDeFechaDada(ABB a, Fecha f);
 //habilidad, ordenados por c�dula de menor a mayor. Los datos de un mismo socio (c�dula
 //m�gica, nombre, fecha de nacimiento, dimensi�n de origen y categor�a m�gica) deber�n
 //listarse todos en una misma l�nea.
-//void ListarTodosLosSociosSinHabilidades(ABB a, Lista listaHabilidades);
+void ListarTodosLosSociosSinHabilidades(ABB a, Lista L);
 
 //Listar los datos del socio m�s poderoso registrado en el sistema. Es decir, del socio que ha
 //manifestado la mayor cantidad de habilidades sobrenaturales de entre todos los socios

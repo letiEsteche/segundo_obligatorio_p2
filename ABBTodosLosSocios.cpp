@@ -67,11 +67,17 @@ int ContarCuantosSociosNacieronAntesDeFechaDada(ABB a, Fecha f)
 }
 
 
-/*void ListarTodosLosSociosSinHabilidades(ABB a, Lista listaHabilidades)
+void ListarTodosLosSociosSinHabilidades(ABB a, Lista L)
 {
-    if(TieneAlgunaHabilidad() == FALSE)
-        DesplegarTodosLosSocios(a);
-    return DesplegarTodosLosSocios;
+    if(a != NULL)
+        if(TieneAlgunaHabilidad( L, a->info.cedula)==FALSE){
+            MostrarMago(a->info);
+            ListarTodosLosSociosSinHabilidades(a->hder, L);
+            ListarTodosLosSociosSinHabilidades(a->hizq, L);
+    }else{
+        ListarTodosLosSociosSinHabilidades(a->hder, L);
+        ListarTodosLosSociosSinHabilidades(a->hizq, L);
+    }
 }
 
 void ListarSocioConMasHabilidades(ABB a)
@@ -80,4 +86,4 @@ void ListarSocioConMasHabilidades(ABB a)
 
 
 }
-*/
+
