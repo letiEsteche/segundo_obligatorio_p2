@@ -60,5 +60,6 @@ void ListarHabilidadesDeUnSocio(Lista L, long cedula);
 //que la fecha ingresada sea v�lida.
 void ListarHabilidadesEnUnaFechaDada(Lista L, Fecha f);
 
+int ContarHabilidadesEntreDosFechasIngresadas(Lista L, Fecha primera, Fecha segunda);
 
 #endif // LISTAHABILIDADESDESOCIO_H_INCLUDED

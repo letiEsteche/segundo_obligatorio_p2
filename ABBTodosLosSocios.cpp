@@ -12,7 +12,7 @@ void InsertarSocio(ABB &a, Mago m) {
         a->hizq = NULL;
         a->hder = NULL;
     } else {
-        if (m.cedula < a->info.cedula)
+        if (m.cedula < a->info.cedula)//selectoras
             InsertarSocio(a->hizq, m);
         else
             InsertarSocio(a->hder, m);
@@ -23,9 +23,9 @@ void InsertarSocio(ABB &a, Mago m) {
 boolean ExisteSocio(ABB a, long cedula) {
     if (a == NULL)
         return FALSE;
-    else if (a->info.cedula == cedula)
+    else if (a->info.cedula == cedula)//selectoras
         return TRUE;
-    else if (cedula < a->info.cedula)
+    else if (cedula < a->info.cedula)//selectoras
         return ExisteSocio(a->hizq, cedula);
     else
         return ExisteSocio(a->hder, cedula);
@@ -59,7 +59,7 @@ int ContarCuantosSociosNacieronAntesDeFechaDada(ABB a, Fecha f)
     if (a == NULL)
         return 0;
     else {
-        if (validarFecha(f))
+        if (validarFecha(f))//hay que preguntar si la fecha es menor
             return 1 + ContarCuantosSociosNacieronAntesDeFechaDada(a->hder, f) + ContarCuantosSociosNacieronAntesDeFechaDada(a->hizq, f);
         else
             return ContarCuantosSociosNacieronAntesDeFechaDada(a->hder, f) + ContarCuantosSociosNacieronAntesDeFechaDada(a->hizq, f);
@@ -69,14 +69,13 @@ int ContarCuantosSociosNacieronAntesDeFechaDada(ABB a, Fecha f)
 
 void ListarTodosLosSociosSinHabilidades(ABB a, Lista L)
 {
-    if(a != NULL)
-        if(TieneAlgunaHabilidad( L, a->info.cedula)==FALSE){
+    if(a != NULL){
+             ListarTodosLosSociosSinHabilidades(a->hizq, L);
+        if(TieneAlgunaHabilidad( L, a->info.cedula)==FALSE){//selectora
             MostrarMago(a->info);
-            ListarTodosLosSociosSinHabilidades(a->hder, L);
-            ListarTodosLosSociosSinHabilidades(a->hizq, L);
-    }else{
+        }
         ListarTodosLosSociosSinHabilidades(a->hder, L);
-        ListarTodosLosSociosSinHabilidades(a->hizq, L);
+
     }
 }
 

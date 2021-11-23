@@ -18,7 +18,7 @@ boolean compararFechas(Fecha a, Fecha b);
 
 boolean PrimeraFechaAnteriorOIgualALaSegunda(Fecha f, Fecha h);
 
-boolean PrimeraFechaPosteriorOIgualALaSegunda(Fecha f, Fecha h);
+boolean PrimeraFechaPosteriorOIgualALaSegunda(Fecha f, Fecha h);//hacer una sola de las 3
 
 boolean FechaIngresadaMayorOigualALaUltimaFechaDeManifestacion(Fecha f, Fecha h);
 
