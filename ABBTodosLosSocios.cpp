@@ -79,9 +79,19 @@ void ListarTodosLosSociosSinHabilidades(ABB a, Lista L)
     }
 }
 
-void ListarSocioConMasHabilidades(ABB a)
+//precondicion cantMax inicia con la raiz del arbol
+void ListarSocioConMasHabilidades(ABB a, Lista L, Mago &masPoderoso, int &cantMax)
 {
+    if(a !=NULL){
+        int aux = CantidadDeHabilidadesPorCedula(L, a->info.cedula);
+        if(aux > cantMax){
+            cantMax = aux;
+            masPoderoso = a->info;
+        }
+        ListarSocioConMasHabilidades(a->hizq,L,masPoderoso, cantMax);
+        ListarSocioConMasHabilidades(a->hder,L,masPoderoso, cantMax);
 
+    }
 
 
 }

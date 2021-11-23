@@ -136,7 +136,7 @@ int main() {
 
     Habilidad h2;
     h2.nombreHabilidad = "Rapidez";
-    h2.cedula = 222;
+    h2.cedula = 111;
     h2.ManifestacionHabilidad.anio = 1500;
     h2.ManifestacionHabilidad.mes = 12;
     h2.ManifestacionHabilidad.dia = 10;
@@ -259,6 +259,20 @@ ListarHabilidadesEnUnaFechaDada(habilidades, h1.ManifestacionHabilidad);
 printf("\n");
 printf("La cantidad de habilidad en rango de fecha es %d",ContarHabilidadesEntreDosFechasIngresadas(habilidades, h2.ManifestacionHabilidad, h1.ManifestacionHabilidad));
 
+//----------------------------------------Contar cantidad de habilidades por cedula
+
+printf("\nLa cantidad de habilidades por cedula es %d",CantidadDeHabilidadesPorCedula(habilidades, h1.cedula));
+
+
+
+//---------------------------------------------mostrar socio mas poderoso
+
+Mago MasPoderoso = socios->info;
+int cantMax = CantidadDeHabilidadesPorCedula(habilidades, socios->info.cedula);
+
+ListarSocioConMasHabilidades(socios, habilidades, MasPoderoso, cantMax);
+printf("\nSocio con mas habilidades tiene %d", cantMax);
+MostrarMago(MasPoderoso);
 
 
     // ------------------------------------------------ Tiene alguna habilidad

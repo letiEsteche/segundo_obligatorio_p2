@@ -51,8 +51,7 @@ void ListarTodosLosSociosSinHabilidades(ABB a, Lista L);
 //manifestado la mayor cantidad de habilidades sobrenaturales de entre todos los socios
 //registrados. En caso de que haya varios, basta con devolver uno cualquiera de ellos. En
 //caso de que no haya ninguno, emitir un mensaje que as� lo indique.
-void ListarSocioConMasHabilidades(ABB a); //VER
-
+void ListarSocioConMasHabilidades(ABB a, Lista L, Mago &masPoderoso, int &cantMax);
 
 
 
