@@ -40,41 +40,19 @@ Fecha FechaDeUltimaHabilidadRegistradaPorUnSocio(Lista L, long cedula) {
     return aux;
 }
 
-void IngresarHabilidad(Lista &habilidades, Habilidad h) {
-    if (ListaVacia(habilidades)) {
-        IngresarPrimeraHabilidad(habilidades, h);
-    } else {
-        if (PrimeraFechaPosteriorOIgualALaSegunda(h.ManifestacionHabilidad, habilidades->info.ManifestacionHabilidad)) {
-            Lista aux = new NodoHabilidad;
-            aux->info = h;
-            aux->sig = habilidades;
-            habilidades = aux;
-        } else if (TieneAlgunaHabilidad(habilidades, h.cedula)) {
-            if (PrimeraFechaAnteriorOIgualALaSegunda(FechaDeUltimaHabilidadRegistradaPorUnSocio(habilidades, h.cedula),h.ManifestacionHabilidad)) {
-                AgregarHabilidadALaLista(habilidades, h);
-            } else {
-                printf("La fecha de la habilidad ha ingresar es anterior la de la ultima habilidad registrada por este usuario");
-            }
-        } else {
-            AgregarHabilidadALaLista(habilidades, h);
-        }
 
-    }
-}
 
 void AgregarHabilidadALaLista(Lista &habilidades, Habilidad h) {
-    if (habilidades->sig == NULL) {
+    if (habilidades == NULL) {
         Lista aux1 = new NodoHabilidad;
         aux1->info = h;
         aux1->sig = NULL;
         habilidades->sig = aux1;
-    } else if (PrimeraFechaPosteriorOIgualALaSegunda(h.ManifestacionHabilidad, habilidades->sig->info.ManifestacionHabilidad)) {
+    } else if (FechaIngresadaMayorOigualALaUltimaFechaDeManifestacion(h.ManifestacionHabilidad, habilidades->info.ManifestacionHabilidad)) {
         Lista aux2 = new NodoHabilidad;
         aux2->info = h;
-        aux2->sig = habilidades->sig;
-        habilidades->sig = aux2;
-    } else {
-        AgregarHabilidadALaLista(habilidades->sig, h);
+        aux2->sig = habilidades;
+        habilidades = aux2;
     }
 }
 

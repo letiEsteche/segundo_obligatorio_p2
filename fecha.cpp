@@ -110,6 +110,24 @@ boolean PrimeraFechaAnteriorOIgualALaSegunda(Fecha f, Fecha h) {
     return primeraFechaMenorASegunda;
 }
 
+boolean FechaIngresadaMayorOigualALaUltimaFechaDeManifestacion(Fecha f, Fecha h)
+{
+    boolean FechaQueIngresoEsMayorOIgualALaFechaDeLaUltimaManifestacion = TRUE;
+    if (f.anio < h.anio) {
+        FechaQueIngresoEsMayorOIgualALaFechaDeLaUltimaManifestacion = FALSE;
+    } else if (f.anio == h.anio) {
+        if (f.mes < h.mes) {
+            FechaQueIngresoEsMayorOIgualALaFechaDeLaUltimaManifestacion = FALSE;
+        } else if (f.mes == h.mes) {
+            if (f.dia < h.dia) {
+                FechaQueIngresoEsMayorOIgualALaFechaDeLaUltimaManifestacion = FALSE;
+            }
+        }
+    }
+    return FechaQueIngresoEsMayorOIgualALaFechaDeLaUltimaManifestacion;
+}
+
+
 boolean PrimeraFechaPosteriorOIgualALaSegunda(Fecha f, Fecha h) {
     boolean primeraFechaMenorASegunda = TRUE;
 
