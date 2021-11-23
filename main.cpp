@@ -183,7 +183,7 @@ int main() {
             IngresarPrimeraHabilidad(habilidades, h1);
         } else {
             if (FechaIngresadaMayorOigualALaUltimaFechaDeManifestacion(h1.ManifestacionHabilidad, habilidades->info.ManifestacionHabilidad)) {
-                AgregarHabilidadALaLista(habilidades, h1);
+                IngresarPrimeraHabilidad(habilidades, h1);
             } else {
                     printf("La fecha de la habilidad ha ingresar es anterior la de la ultima habilidad registrada ");
             }
@@ -197,7 +197,7 @@ int main() {
             IngresarPrimeraHabilidad(habilidades, h2);
         } else {
             if (FechaIngresadaMayorOigualALaUltimaFechaDeManifestacion(h2.ManifestacionHabilidad, habilidades->info.ManifestacionHabilidad)) {
-                AgregarHabilidadALaLista(habilidades, h2);
+                IngresarPrimeraHabilidad(habilidades, h2);
             } else {
                     printf("La fecha de la habilidad ha ingresar es anterior la de la ultima habilidad registrada ");
             }
@@ -247,6 +247,17 @@ int main() {
     ListarTodosLosSociosSinHabilidades(socios, habilidades);
 
 
+//----------------------------------------mostrar todas las habilidades de una cedula
+printf("\nHabilidades de una cedula");
+ListarHabilidadesDeUnSocio(habilidades,h1.cedula);
+
+//---------------------------------------mostrar habilidades de una fecha
+printf("\nMostrar habilidad en una fecha");
+ListarHabilidadesEnUnaFechaDada(habilidades, h1.ManifestacionHabilidad);
+
+//-------------------------------------------contar habilidades entre dos fechas
+printf("\n");
+printf("La cantidad de habilidad en rango de fecha es %d",ContarHabilidadesEntreDosFechasIngresadas(habilidades, h2.ManifestacionHabilidad, h1.ManifestacionHabilidad));
 
 
 
