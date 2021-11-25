@@ -4,7 +4,7 @@ void Crear(ABB &a) {
     a = NULL;
 }
 
-/* precondici�n: el la cedula no exist�a previamente en el ABB */
+/* precondicion: el la cedula no existia previamente en el ABB */
 void InsertarSocio(ABB &a, Mago m) {
     if (a == NULL) {
         a = new NodoSocio;
@@ -12,7 +12,7 @@ void InsertarSocio(ABB &a, Mago m) {
         a->hizq = NULL;
         a->hder = NULL;
     } else {
-        if (m.cedula < a->info.cedula)//selectoras
+        if (DarCedula(m) < a->info.cedula)
             InsertarSocio(a->hizq, m);
         else
             InsertarSocio(a->hder, m);
@@ -70,7 +70,7 @@ int ContarCuantosSociosNacieronAntesDeFechaDada(ABB a, Fecha f)
 void ListarTodosLosSociosSinHabilidades(ABB a, Lista L)
 {
     if(a != NULL){
-             ListarTodosLosSociosSinHabilidades(a->hizq, L);
+            ListarTodosLosSociosSinHabilidades(a->hizq, L);
         if(TieneAlgunaHabilidad( L, a->info.cedula)==FALSE){//selectora
             MostrarMago(a->info);
         }
