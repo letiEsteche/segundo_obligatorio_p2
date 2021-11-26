@@ -8,4 +8,6 @@ void CargarTipoDeHabilidadMago(TipoHabilidad &c);
 
 void MostrarTipoDeHabilidadMago(TipoHabilidad c);
 
+int ContarTipoDeHabilidades(TipoHabilidad c, int contarNatural, int contarSobrenatural, int contarPoconatural);
+
 #endif // TIPOHABILIDAD_H_INCLUDED

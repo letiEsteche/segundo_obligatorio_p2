@@ -5,7 +5,7 @@
 int main()
 {
 
-    int opcion;
+    int opcion, Brujos=0, Hadas=0, Hechiceros=0, natural=0, sobrenatural=0, poconatural=0;
     Mago m;
     long cedula;
     ABB socios;
@@ -13,7 +13,8 @@ int main()
     Habilidad h;
     Lista habilidades;
     Crear(habilidades);
-
+    TipoHabilidad t;
+    Fecha f;
 
 
     do{
@@ -24,8 +25,8 @@ int main()
 
                    CargarMago(m);
 
-                    if(ExisteSocio(socios, cedula)){
-                        printf("La cedula del socio ya esta ingresada");
+                    if(ExisteSocio(socios, m.cedula) == TRUE){
+                        printf("La cedula del socio ya esta ingresada\n");
                     }else{
                         InsertarSocio(socios, m);
                     }
@@ -37,10 +38,69 @@ int main()
             case 3: //ingresar habilidad
                     CargarHabilidad(h);
                     break;
+
+            case 4: //mostrar habilidad
+                    MostrarHabilidad(h);
+                    break;
+
+            case 5: //
+                    printf("\t\t_MENU DE CONSULTAS Y LISTADOS_\n\n");
+                    do{
+                    menuConsultasYListas(opcion);
+
+                        switch(opcion){
+                            case 1: //Mostrar cuantos socios de cada categoria magica
+                                    ContarSociosDeCadaCategoria(socios, Brujos, Hadas, Hechiceros);
+                                    printf("\nCantidad de socios por tipo:");
+                                    printf("\nBrujos: %d \nHadas: %d \nHechiceros: %d", Brujos, Hadas, Hechiceros);
+                                    printf("\n");
+                                    break;
+
+  //VER FALTABA             case 2: //Mostrar cuantas habilidades de cada tipo hay registradas
+                                    ContarTipoDeHabilidades(t, natural, sobrenatural, poconatural);
+                                    printf("La cantidad de habilidades por tipo es: ");
+                                    printf("\n Natural %d \nSobrenatural %d\n Poconatural %d");
+                                    break;
+
+                            case 3: //Mostrar cuantos de los socios registrados en el sistema nacieron antes de una fecha dada fecha
+                                    printf("\nIngrese una fecha: ");
+                                    cargarFecha(f);
+                                    printf("La cantidad de socios que nacieron antes de la fecha son %d\n",ContarCuantosSociosNacieronAntesDeFechaDada(socios, f));
+
+                                    break;
+
+
+
+
+
+                            case 0: // salir
+                                    printf("Hasta luego...");
+                                    break;
+                            default:
+                                    printf("\nLa opcion seleccionada es invalida, por favor seleccione otra opcion.\n");
+                        }
+
+                    }while(opcion !=0);
+                    break;
+
+
+
+            case 0: // salir
+                    printf("Hasta luego...");
+                    break;
+            default:
+                    printf("\nLa opcion seleccionada es invalida, por favor seleccione otra opcion.\n");
         }
 
     }while(opcion !=0);
-}
+
+
+
+
+
+
+
+
 
     // ------------------------------------------------ Primera fecha es posterior o igual a la segunda
 
@@ -332,6 +392,6 @@ MostrarMago(MasPoderoso);
 
 */
 
-
+}
 
 

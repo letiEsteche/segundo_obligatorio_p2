@@ -4,9 +4,9 @@
 #include "Habilidad.h"
 
 typedef struct HabilidadesDeSocioStruct {
-    Habilidad info;
-    HabilidadesDeSocioStruct *sig;
-} NodoHabilidad;
+                                            Habilidad info;
+                                            HabilidadesDeSocioStruct *sig;
+                                        } NodoHabilidad;
 
 typedef NodoHabilidad *Lista;
 
