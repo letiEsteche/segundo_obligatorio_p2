@@ -14,7 +14,7 @@ int main()
     Lista habilidades;
     Crear(habilidades);
     TipoHabilidad t;
-    Fecha f;
+    Fecha f, g;
 
 
     do{
@@ -37,7 +37,35 @@ int main()
 
             case 3: //ingresar habilidad
                     CargarHabilidad(h);
-                    break;
+
+                    if (ExisteSocio(socios, cedula)) {
+                        if (ListaVacia(habilidades)) {
+                            IngresarPrimeraHabilidad(habilidades, h);
+                        } else {
+                            if (FechaIngresadaMayorOigualALaUltimaFechaDeManifestacion(h.ManifestacionHabilidad, habilidades->info.ManifestacionHabilidad)) {
+                                IngresarPrimeraHabilidad(habilidades, h);
+                            } else {
+                                    printf("La fecha de la habilidad ha ingresar es anterior la de la ultima habilidad registrada ");
+                            }
+                        }
+                    } else {
+                            printf("No existe ningun usuario en el sistema que contenga la cedula introducia en la habilidad\nAgregue socio primero\n");
+                        }
+
+                    if (ExisteSocio(socios, cedula)) {
+                        if (ListaVacia(habilidades)) {
+                            IngresarPrimeraHabilidad(habilidades, h);
+                        } else {
+                            if (FechaIngresadaMayorOigualALaUltimaFechaDeManifestacion(h.ManifestacionHabilidad, habilidades->info.ManifestacionHabilidad)) {
+                                IngresarPrimeraHabilidad(habilidades, h);
+                            } else {
+                                    printf("La fecha de la habilidad ha ingresar es anterior la de la ultima habilidad registrada ");
+                            }
+                        }
+                    } else {
+                            printf("No existe ningun usuario en el sistema que contenga la cedula introducia en la habilidad\nAgregue socio primero\n");
+                        }
+                                    break;
 
             case 4: //mostrar habilidad
                     MostrarHabilidad(h);
@@ -56,18 +84,40 @@ int main()
                                     printf("\n");
                                     break;
 
-  //VER FALTABA             case 2: //Mostrar cuantas habilidades de cada tipo hay registradas
-                                    ContarTipoDeHabilidades(t, natural, sobrenatural, poconatural);
-                                    printf("La cantidad de habilidades por tipo es: ");
-                                    printf("\n Natural %d \nSobrenatural %d\n Poconatural %d");
+                            case 2: //Mostrar cuantas habilidades de cada tipo hay registradas
+                                    if (ListaVacia(habilidades))
+                                        printf("\nNo hay habilidades ingresadas.");
+                                    else{
+                                        ContarTipoDeHabilidades(t, natural, sobrenatural, poconatural);
+                                        printf("La cantidad de habilidades por tipo es: ");
+                                        printf("\n Natural %d \nSobrenatural %d\n Poconatural %d");
+                                    }
                                     break;
 
                             case 3: //Mostrar cuantos de los socios registrados en el sistema nacieron antes de una fecha dada fecha
                                     printf("\nIngrese una fecha: ");
                                     cargarFecha(f);
                                     printf("La cantidad de socios que nacieron antes de la fecha son %d\n",ContarCuantosSociosNacieronAntesDeFechaDada(socios, f));
-
                                     break;
+
+                            case 4: //Mostrar cuantas habilidades fueron ingresadas dentro de un rango de fechas dadas
+                                    printf("Ingrese una fecha: ");
+                                    cargarFecha(f);
+                                    printf("Ingrese otra fechaa mayor a la anterior: ");
+                                    cargarFecha(g);
+                                    printf("La cantidad de habilidades ingresadas en el rango de fecha es %d\n",ContarHabilidadesEntreDosFechasIngresadas(habilidades,f, g));
+                                    break;
+
+                            case 5: //Listar todos los socios registrados en el sistema, ordenados por cedula de menor a mayor
+                                    DesplegarTodosLosSocios(socios);
+                                    printf("\n");
+                                    break;
+
+                            case 6: //Listar todos aquellos socios registrados en el sistema que aun no han manifestado ninguna habilidad
+                                    printf("\n\nLos socios sin habilidades son: \n");
+                                    ListarTodosLosSociosSinHabilidades(socios, habilidades);
+                                    break;
+
 
 
 
