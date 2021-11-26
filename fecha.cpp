@@ -91,7 +91,7 @@ boolean compararFechas(Fecha a, Fecha b) {
 
     return sonIguales;
 }
-
+                                            //2019     2020
 boolean PrimeraFechaAnteriorOIgualALaSegunda(Fecha f, Fecha h) {
     boolean primeraFechaMenorASegunda = TRUE;
 
@@ -127,20 +127,20 @@ boolean FechaIngresadaMayorOigualALaUltimaFechaDeManifestacion(Fecha f, Fecha h)
     return FechaQueIngresoEsMayorOIgualALaFechaDeLaUltimaManifestacion;
 }
 
-
+                                            // 2020      2019
 boolean PrimeraFechaPosteriorOIgualALaSegunda(Fecha f, Fecha h) {
-    boolean primeraFechaMenorASegunda = TRUE;
+    boolean primeraFechaMayorASegunda = TRUE;
 
     if (f.anio < h.anio) {
-        primeraFechaMenorASegunda = FALSE;
+        primeraFechaMayorASegunda = FALSE;
     } else if (f.anio == h.anio) {
         if (f.mes < h.mes) {
-            primeraFechaMenorASegunda = FALSE;
+            primeraFechaMayorASegunda = FALSE;
         } else if (f.mes == h.mes) {
             if (f.dia < h.dia) {
-                primeraFechaMenorASegunda = FALSE;
+                primeraFechaMayorASegunda = FALSE;
             }
         }
     }
-    return primeraFechaMenorASegunda;
+    return primeraFechaMayorASegunda;
 }

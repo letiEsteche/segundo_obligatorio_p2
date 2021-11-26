@@ -2,7 +2,45 @@
 #include "ListaHabilidadesDeSocio.h"
 #include "ABBTodosLosSocios.h"
 
-int main() {
+int main()
+{
+
+    int opcion;
+    Mago m;
+    long cedula;
+    ABB socios;
+    Crear(socios);
+    Habilidad h;
+    Lista habilidades;
+    Crear(habilidades);
+
+
+
+    do{
+        menuPrincipal(opcion);
+
+        switch(opcion){
+            case 1: //Ingresar mago
+
+                   CargarMago(m);
+
+                    if(ExisteSocio(socios, cedula)){
+                        printf("La cedula del socio ya esta ingresada");
+                    }else{
+                        InsertarSocio(socios, m);
+                    }
+                    break;
+            case 2: //mostrar mago ingresado
+                    MostrarMago(m);
+                    break;
+
+            case 3: //ingresar habilidad
+                    CargarHabilidad(h);
+                    break;
+        }
+
+    }while(opcion !=0);
+}
 
     // ------------------------------------------------ Primera fecha es posterior o igual a la segunda
 
@@ -40,7 +78,7 @@ int main() {
 //        printf("\nLa primera fecha NO es anterior o igual a la segunda");
 //    }
 
-    // ------------------------------------------------ Crear árbol de socios
+ /*   // ------------------------------------------------ Crear árbol de socios
 
     ABB socios;
     Crear(socios);
@@ -136,7 +174,7 @@ int main() {
 
     Habilidad h2;
     h2.nombreHabilidad = "Rapidez";
-    h2.cedula = 222;
+    h2.cedula = 111;
     h2.ManifestacionHabilidad.anio = 1500;
     h2.ManifestacionHabilidad.mes = 12;
     h2.ManifestacionHabilidad.dia = 10;
@@ -238,7 +276,7 @@ int main() {
     } else {
         printf("No existe ningun usuario en el sistema que contenga la cedula introducia en la habilidad\n");
     }
-*/printf("\nMostrar todas las habilidades registradas:");
+printf("\nMostrar todas las habilidades registradas:");
     MostrarTodasLasHabilidades(habilidades);
 
 
@@ -259,6 +297,21 @@ ListarHabilidadesEnUnaFechaDada(habilidades, h1.ManifestacionHabilidad);
 printf("\n");
 printf("La cantidad de habilidad en rango de fecha es %d",ContarHabilidadesEntreDosFechasIngresadas(habilidades, h2.ManifestacionHabilidad, h1.ManifestacionHabilidad));
 
+//----------------------------------------Contar cantidad de habilidades por cedula
+
+printf("\nLa cantidad de habilidades por cedula es %d",CantidadDeHabilidadesPorCedula(habilidades, h1.cedula));
+
+
+
+//---------------------------------------------mostrar socio mas poderoso
+
+Mago MasPoderoso = socios->info;
+int cantMax = CantidadDeHabilidadesPorCedula(habilidades, socios->info.cedula);
+
+ListarSocioConMasHabilidades(socios, habilidades, MasPoderoso, cantMax);
+printf("\nSocio con mas habilidades tiene
+       %d", cantMax);
+MostrarMago(MasPoderoso);
 
 
     // ------------------------------------------------ Tiene alguna habilidad
@@ -277,8 +330,8 @@ printf("La cantidad de habilidad en rango de fecha es %d",ContarHabilidadesEntre
 //        printf("No");
 //    }
 
+*/
 
 
 
 
-}
