@@ -96,3 +96,36 @@ int CantidadDeHabilidadesPorCedula(Lista L, long cedula)
     }
     return contarHabilidadesPorCedula;
 }
+
+void guardarHabilidades(Lista lista) {
+    FILE *archivo;
+    archivo = fopen("Habilidades.txt", "wb");
+    if (archivo != nullptr) {
+        printf("\nEntre al if\n");
+        while (lista!=NULL){
+            printf("\nEntre al while\n");
+            fwrite(&lista->info, sizeof(Habilidad), 1, archivo);
+            lista = lista->sig;
+        }
+    } else {
+        printf("\nOcurrio un error al abrir el archivo");
+    }
+    fclose(archivo);
+}
+
+void cargarHabilidades(Lista &lista) {
+    FILE *archivo;
+    archivo = fopen("Habilidades.txt", "rb"); // si no se puede abrir el archivo retorna NULL
+    if (archivo != nullptr) {
+        Habilidad aux;
+        fread(&aux, sizeof(Habilidad), 1, archivo);
+        while (!feof(archivo)) {
+            printf("\n");
+            MostrarHabilidad(aux);
+            printf("\n");
+            fread(&aux, sizeof(Habilidad), 1, archivo); // lee un entro del archivo y deja el cursor en la siguiente posición
+        }
+
+        fclose(archivo); // cierra el archivo
+    }
+}

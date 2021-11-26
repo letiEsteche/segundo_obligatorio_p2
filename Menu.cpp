@@ -5,9 +5,9 @@ void menuPrincipal(int &opcion)
 {
 
     printf("\n1- Ingresar Mago");
-    printf("\n2- Mostrar Mago ingresado");
+    printf("\n2- Mostrar Magos ingresados");
     printf("\n3- Ingresar una habilidad");
-    printf("\n4- Mostrar habilidad ingresada");
+    printf("\n4- Mostrar habilidades ingresadas");
     printf("\n5- Mostrar Menu de consultas y listados");
     printf("\n0- Salir");
 

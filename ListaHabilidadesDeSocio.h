@@ -4,9 +4,9 @@
 #include "Habilidad.h"
 
 typedef struct HabilidadesDeSocioStruct {
-                                            Habilidad info;
-                                            HabilidadesDeSocioStruct *sig;
-                                        } NodoHabilidad;
+    Habilidad info;
+    HabilidadesDeSocioStruct *sig;
+} NodoHabilidad;
 
 typedef NodoHabilidad *Lista;
 
@@ -46,7 +46,6 @@ int ContarHabilidadesEntreDosFechasIngresadas(Lista l, Fecha desde, Fecha hasta)
 int CantidadDeHabilidadesPorCedula(Lista L, long cedula);
 
 
-
 //Dada la c�dula m�gica de un socio, listar todas las habilidades correspondientes a dicho
 //socio, ordenadas en forma cronol�gica inversa (desde las m�s recientes hacia las m�s
 //antiguas). Los datos de una misma habilidad (nombre, fecha de manifestaci�n, c�dula m�gica
@@ -61,5 +60,9 @@ void ListarHabilidadesDeUnSocio(Lista L, long cedula);
 void ListarHabilidadesEnUnaFechaDada(Lista L, Fecha f);
 
 int ContarHabilidadesEntreDosFechasIngresadas(Lista L, Fecha primera, Fecha segunda);
+
+void guardarHabilidades(Lista lista);
+
+void cargarHabilidades(Lista &lista);
 
 #endif // LISTAHABILIDADESDESOCIO_H_INCLUDED
