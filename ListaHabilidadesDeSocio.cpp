@@ -19,7 +19,7 @@ void IngresarPrimeraHabilidad(Lista &habilidades, Habilidad h) {
 boolean TieneAlgunaHabilidad(Lista L, long cedula) {
     boolean cedulaTieneHabilidad = FALSE;
     while (L != NULL && !cedulaTieneHabilidad) {
-        if (L->info.cedula == cedula) { //selectora
+        if (DarCedulaHabilidad(L->info) == cedula) {
             cedulaTieneHabilidad = TRUE;
         }
         L = L->sig;
@@ -31,8 +31,8 @@ Fecha FechaDeUltimaHabilidadRegistradaPorUnSocio(Lista L, long cedula) {
     Fecha aux;
     boolean encontre = FALSE;
     while (L != NULL && !encontre) {
-        if (L->info.cedula == cedula) {//selectoras
-            aux = L->info.ManifestacionHabilidad;//selectoras
+        if (DarCedulaHabilidad(L->info) == cedula) {
+            aux = DarFechaDeManifestacionHabilidad(L->info);
             encontre = TRUE;
         }
         L = L->sig;
@@ -51,7 +51,7 @@ void MostrarTodasLasHabilidades(Lista lista) {
 void ListarHabilidadesDeUnSocio(Lista L, long cedula)
 {
     while(L != NULL){
-        if(L->info.cedula == cedula){
+        if(DarCedulaHabilidad(L->info) == cedula){
             MostrarHabilidad(L->info);
         }
         L= L->sig;
@@ -62,20 +62,18 @@ void ListarHabilidadesDeUnSocio(Lista L, long cedula)
 void ListarHabilidadesEnUnaFechaDada(Lista L, Fecha f)
 {
     while(L != NULL){
-        if(compararFechas(L->info.ManifestacionHabilidad, f))//selectora
+        if(compararFechas(DarFechaDeManifestacionHabilidad(L->info), f))
             MostrarHabilidad(L->info);
         L=L->sig;
     }
 }
 
 
-// ------------------------------------------------
-
 
 int ContarHabilidadesEntreDosFechasIngresadas(Lista L, Fecha primera, Fecha segunda)
 {
     int contarHabilidades =0;
-    while(L!= NULL){ // 2020-2010
+    while(L!= NULL){
         if(PrimeraFechaAnteriorOIgualALaSegunda(L->info.ManifestacionHabilidad,primera) &&
            PrimeraFechaAnteriorOIgualALaSegunda(segunda,L->info.ManifestacionHabilidad)){
                contarHabilidades++;
