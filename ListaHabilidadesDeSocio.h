@@ -4,9 +4,9 @@
 #include "Habilidad.h"
 
 typedef struct HabilidadesDeSocioStruct {
-                                            Habilidad info;
-                                            HabilidadesDeSocioStruct *sig;
-                                        } NodoHabilidad;
+    Habilidad info;
+    HabilidadesDeSocioStruct *sig;
+} NodoHabilidad;
 
 typedef NodoHabilidad *Lista;
 
@@ -25,12 +25,13 @@ Fecha FechaDeUltimaHabilidadRegistradaPorUnSocio(Lista L, long cedula);
 
 void IngresarHabilidad(Lista &habilidades, Habilidad h);
 
-void AgregarHabilidadALaLista(Lista &habilidades, Habilidad h);
-
 void MostrarTodasLasHabilidades(Lista lista);
 
+//Contar cu�ntas habilidades de cada tipo (naturales, poco naturales y sobrenaturales) hay
+//registradas en el sistema.
+void CantidadHabilidadDeCadaTipo(Lista L, int &n, int &p, int &s);
 
-
+int ContarHabilidadesEntreDosFechasIngresadas(Lista l, Fecha desde, Fecha hasta);
 
 
 
@@ -38,15 +39,12 @@ void MostrarTodasLasHabilidades(Lista lista);
 // ------------------------------------------------
 
 
-int ContarHabilidadesEntreDosFechasIngresadas(Lista l, TipoHabilidad t);
+
 
 
 //usar en mago mas poderoso
 int CantidadDeHabilidadesPorCedula(Lista L, long cedula);
 
-//Contar cu�ntas habilidades de cada tipo (naturales, poco naturales y sobrenaturales) hay
-//registradas en el sistema.
-void CantidadHabilidadDeCadaTipo(Lista L, int &n, int &p, int &s);
 
 //Dada la c�dula m�gica de un socio, listar todas las habilidades correspondientes a dicho
 //socio, ordenadas en forma cronol�gica inversa (desde las m�s recientes hacia las m�s
@@ -62,5 +60,9 @@ void ListarHabilidadesDeUnSocio(Lista L, long cedula);
 void ListarHabilidadesEnUnaFechaDada(Lista L, Fecha f);
 
 int ContarHabilidadesEntreDosFechasIngresadas(Lista L, Fecha primera, Fecha segunda);
+
+void guardarHabilidades(Lista lista);
+
+void cargarHabilidades(Lista &lista);
 
 #endif // LISTAHABILIDADESDESOCIO_H_INCLUDED

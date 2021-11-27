@@ -64,7 +64,7 @@ boolean validarFecha(Fecha fecha) {
             fechaCorrecta = FALSE;
         }
 
-        if (anio < 0 || anio > 2021) {
+        if (anio < 0) {
             fechaCorrecta = FALSE;
         }
     } else {

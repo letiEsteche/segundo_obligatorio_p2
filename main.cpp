@@ -2,10 +2,13 @@
 #include "ListaHabilidadesDeSocio.h"
 #include "ABBTodosLosSocios.h"
 
-int main()
-{
+int main() {
 
+<<<<<<< HEAD
     int opcion, Brujos=0, Hadas=0, Hechiceros=0, natural=0, sobrenatural=0, poconatural=0, cantMax;
+=======
+    int opcion, Brujos = 0, Hadas = 0, Hechiceros = 0, natural = 0, sobrenatural = 0, poconatural = 0;
+>>>>>>> 2bfaabc1f315c08cf23e5fdce968514c0d9305e0
     Mago m;
     long cedula;
     ABB socios;
@@ -23,28 +26,36 @@ int main()
 
 
 
+//    cargarHabilidades(habilidades);
 
+<<<<<<< HEAD
     do{
         printf("\n\t\t_MENU PRINCIPAL_\n");
         menuPrincipal(opcion);
 
 
         switch(opcion){
+=======
+    do {
+        menuPrincipal(opcion);
+
+        switch (opcion) {
+>>>>>>> 2bfaabc1f315c08cf23e5fdce968514c0d9305e0
             case 1: //Ingresar mago
-
-                   CargarMago(m);
-
-                    if(ExisteSocio(socios, m.cedula) == TRUE){
-                        printf("La cedula del socio ya esta ingresada\n");
-                    }else{
-                        InsertarSocio(socios, m);
-                    }
-                    break;
+                CargarMago(m);
+                if (!ExisteSocio(socios, m.cedula)) {
+                    InsertarSocio(socios, m);
+                } else {
+                    printf("La cedula del socio ya esta ingresada\n");
+                }
+                break;
             case 2: //mostrar mago ingresado
-                    MostrarMago(m);
-                    break;
+//                    MostrarMago(m);
+                DesplegarTodosLosSocios(socios);
+                break;
 
             case 3: //ingresar habilidad
+<<<<<<< HEAD
                     CargarHabilidad(h);
 
                     if (ExisteSocio(socios, m.cedula)) {
@@ -75,16 +86,36 @@ int main()
                             printf("No existe ningun usuario en el sistema que contenga la cedula introducia en la habilidad\nAgregue socio primero\n");
                         }
                                     break;
+=======
+                CargarHabilidad(h);
+                if (ExisteSocio(socios, h.cedula)) {
+                    if (ListaVacia(habilidades)) {
+                        IngresarPrimeraHabilidad(habilidades, h);
+                    } else {
+                        if (FechaIngresadaMayorOigualALaUltimaFechaDeManifestacion(h.ManifestacionHabilidad,
+                                                                                   habilidades->info.ManifestacionHabilidad)) {
+                            IngresarPrimeraHabilidad(habilidades, h);
+                        } else {
+                            printf("\nLa fecha de la habilidad ha ingresar es anterior la de la ultima habilidad registrada ");
+                        }
+                    }
+                } else {
+                    printf("\nNo existe ningun usuario en el sistema que contenga la cedula introducia en la habilidad\nAgregue socio primero\n");
+                }
+                break;
+>>>>>>> 2bfaabc1f315c08cf23e5fdce968514c0d9305e0
 
             case 4: //mostrar habilidad
-                    MostrarHabilidad(h);
-                    break;
+//                MostrarHabilidad(h);
+                MostrarTodasLasHabilidades(habilidades);
+                break;
 
             case 5: //
-                    printf("\t\t_MENU DE CONSULTAS Y LISTADOS_\n\n");
-                    do{
+                printf("\t\t_MENU DE CONSULTAS Y LISTADOS_\n\n");
+                do {
                     menuConsultasYListas(opcion);
 
+<<<<<<< HEAD
                         switch(opcion){
                             case 1: //Mostrar cuantos socios de cada categoria magica
                                     ContarSociosDeCadaCategoria(socios, Brujos, Hadas, Hechiceros);
@@ -164,8 +195,42 @@ int main()
                         }
                     }while(opcion != 0);
                     break;
+=======
+                    switch (opcion) {
+                        case 1: //Mostrar cuantos socios de cada categoria magica
+                            ContarSociosDeCadaCategoria(socios, Brujos, Hadas, Hechiceros);
+                            printf("\nCantidad de socios por tipo:");
+                            printf("\nBrujos: %d \nHadas: %d \nHechiceros: %d", Brujos, Hadas, Hechiceros);
+                            printf("\n");
+                            break;
+
+                            //VER FALTABA             case 2: //Mostrar cuantas habilidades de cada tipo hay registradas
+                            ContarTipoDeHabilidades(t, natural, sobrenatural, poconatural);
+                            printf("La cantidad de habilidades por tipo es: ");
+                            printf("\n Natural %d \nSobrenatural %d\n Poconatural %d");
+                            break;
+
+                        case 3: //Mostrar cuantos de los socios registrados en el sistema nacieron antes de una fecha dada fecha
+                            printf("\nIngrese una fecha: ");
+                            cargarFecha(f);
+                            printf("La cantidad de socios que nacieron antes de la fecha son %d\n",
+                                   ContarCuantosSociosNacieronAntesDeFechaDada(socios, f));
+
+                            break;
 
 
+                        case 0: // salir
+                            printf("Hasta luego...");
+                            break;
+                        default:
+                            printf("\nLa opcion seleccionada es invalida, por favor seleccione otra opcion.\n");
+                    }
+>>>>>>> 2bfaabc1f315c08cf23e5fdce968514c0d9305e0
+
+                } while (opcion != 0);
+                break;
+
+<<<<<<< HEAD
             case 6: // salir
                     printf("Hasta luego...");
                     break;
@@ -174,6 +239,21 @@ int main()
                     break;
         }
     }while(opcion !=6);
+=======
+
+            case 0: // salir
+                printf("Guardado habilidades...");
+                guardarHabilidades(habilidades);
+                printf("Guardado finalizado.");
+
+                printf("Hasta luego...");
+                break;
+            default:
+                printf("\nLa opcion seleccionada es invalida, por favor seleccione otra opcion.\n");
+        }
+
+    } while (opcion != 0);
+>>>>>>> 2bfaabc1f315c08cf23e5fdce968514c0d9305e0
 
 
 
@@ -219,259 +299,259 @@ int main()
 //        printf("\nLa primera fecha NO es anterior o igual a la segunda");
 //    }
 
- /*   // ------------------------------------------------ Crear árbol de socios
+    /*   // ------------------------------------------------ Crear árbol de socios
 
-    ABB socios;
-    Crear(socios);
+       ABB socios;
+       Crear(socios);
 
-    // ------------------------------------------------ Crear socios
+       // ------------------------------------------------ Crear socios
 
-    Mago m1;
-    m1.nombre = "Leticia";
-    m1.cedula = 111;
-    m1.categoria = BRUJO;
-    m1.DimensionOrigen = "Montevideo";
-    m1.nacimiento.dia = 1;
-    m1.nacimiento.mes = 12;
-    m1.nacimiento.anio = 1901;
+       Mago m1;
+       m1.nombre = "Leticia";
+       m1.cedula = 111;
+       m1.categoria = BRUJO;
+       m1.DimensionOrigen = "Montevideo";
+       m1.nacimiento.dia = 1;
+       m1.nacimiento.mes = 12;
+       m1.nacimiento.anio = 1901;
 
-    Mago m2;
-    m2.nombre = "Santiago";
-    m2.cedula = 222;
-    m2.categoria = HADA;
-    m2.DimensionOrigen = "Colonia";
-    m2.nacimiento.dia = 1;
-    m2.nacimiento.mes = 12;
-    m2.nacimiento.anio = 1902;
+       Mago m2;
+       m2.nombre = "Santiago";
+       m2.cedula = 222;
+       m2.categoria = HADA;
+       m2.DimensionOrigen = "Colonia";
+       m2.nacimiento.dia = 1;
+       m2.nacimiento.mes = 12;
+       m2.nacimiento.anio = 1902;
 
-    Mago m3;
-    m3.nombre = "Florencia";
-    m3.cedula = 333;
-    m3.categoria = HECHICERO;
-    m3.DimensionOrigen = "Montevideo";
-    m3.nacimiento.dia = 1;
-    m3.nacimiento.mes = 12;
-    m3.nacimiento.anio = 1903;
+       Mago m3;
+       m3.nombre = "Florencia";
+       m3.cedula = 333;
+       m3.categoria = HECHICERO;
+       m3.DimensionOrigen = "Montevideo";
+       m3.nacimiento.dia = 1;
+       m3.nacimiento.mes = 12;
+       m3.nacimiento.anio = 1903;
 
-    Mago m4;
-    m4.nombre = "Harry Potter";
-    m4.cedula = 444;
-    m4.categoria = BRUJO;
-    m4.DimensionOrigen = "Inglaterra";
-    m4.nacimiento.dia = 1;
-    m4.nacimiento.mes = 12;
-    m4.nacimiento.anio = 1903;
+       Mago m4;
+       m4.nombre = "Harry Potter";
+       m4.cedula = 444;
+       m4.categoria = BRUJO;
+       m4.DimensionOrigen = "Inglaterra";
+       m4.nacimiento.dia = 1;
+       m4.nacimiento.mes = 12;
+       m4.nacimiento.anio = 1903;
 
-    // ------------------------------------------------ Insertar socio
+       // ------------------------------------------------ Insertar socio
 
-    InsertarSocio(socios, m1);
-    InsertarSocio(socios, m3);
-    InsertarSocio(socios, m2);
-    InsertarSocio(socios, m4);
+       InsertarSocio(socios, m1);
+       InsertarSocio(socios, m3);
+       InsertarSocio(socios, m2);
+       InsertarSocio(socios, m4);
 
-    // ------------------------------------------------ Existe socio
+       // ------------------------------------------------ Existe socio
 
-//    if (ExisteSocio(socios, 111)) {
-//        printf("\nsi existe el socio\n");
-//    } else {
-//        printf("\nNO existe el socio\n");
-//    }
+   //    if (ExisteSocio(socios, 111)) {
+   //        printf("\nsi existe el socio\n");
+   //    } else {
+   //        printf("\nNO existe el socio\n");
+   //    }
 
-    // ------------------------------------------------ Mostrar socios
+       // ------------------------------------------------ Mostrar socios
 
-    DesplegarTodosLosSocios(socios);
+       DesplegarTodosLosSocios(socios);
 
-    // ------------------------------------------------ Cantidad de socios por tipo
+       // ------------------------------------------------ Cantidad de socios por tipo
 
-//    int brujos = 0;
-//    int hadas = 0;
-//    int hechiceros = 0;
-//    ContarSociosDeCadaCategoria(socios, brujos, hadas, hechiceros);
-//    printf("\n\nCantidad de socios por tipo:");
-//    printf("\nBrujos:%d \nHadas:%d \nHechiceros:%d", brujos, hadas, hechiceros);
+   //    int brujos = 0;
+   //    int hadas = 0;
+   //    int hechiceros = 0;
+   //    ContarSociosDeCadaCategoria(socios, brujos, hadas, hechiceros);
+   //    printf("\n\nCantidad de socios por tipo:");
+   //    printf("\nBrujos:%d \nHadas:%d \nHechiceros:%d", brujos, hadas, hechiceros);
 
-    // ------------------------------------------------ Crear lista de habilidades
+       // ------------------------------------------------ Crear lista de habilidades
 
-    Lista habilidades;
-    Crear(habilidades);
+       Lista habilidades;
+       Crear(habilidades);
 
-    // ------------------------------------------------ Comprobar lista vacía
+       // ------------------------------------------------ Comprobar lista vacía
 
-//    if (ListaVacia(habilidades)) {
-//        printf("\nLa lista esta vacia");
-//    } else {
-//        printf("\nLa lista NO esta vacia");
-//    }
+   //    if (ListaVacia(habilidades)) {
+   //        printf("\nLa lista esta vacia");
+   //    } else {
+   //        printf("\nLa lista NO esta vacia");
+   //    }
 
-    // ------------------------------------------------ Crear habilidades
+       // ------------------------------------------------ Crear habilidades
 
-    Habilidad h1;
-    h1.nombreHabilidad = "Inteligencia";
-    h1.cedula = 111;
-    h1.ManifestacionHabilidad.anio = 1500;
-    h1.ManifestacionHabilidad.mes = 12;
-    h1.ManifestacionHabilidad.dia = 7;
-    h1.tipo = NATURAL;
+       Habilidad h1;
+       h1.nombreHabilidad = "Inteligencia";
+       h1.cedula = 111;
+       h1.ManifestacionHabilidad.anio = 1500;
+       h1.ManifestacionHabilidad.mes = 12;
+       h1.ManifestacionHabilidad.dia = 7;
+       h1.tipo = NATURAL;
 
-    Habilidad h2;
-    h2.nombreHabilidad = "Rapidez";
-    h2.cedula = 111;
-    h2.ManifestacionHabilidad.anio = 1500;
-    h2.ManifestacionHabilidad.mes = 12;
-    h2.ManifestacionHabilidad.dia = 10;
-    h2.tipo = NATURAL;
+       Habilidad h2;
+       h2.nombreHabilidad = "Rapidez";
+       h2.cedula = 111;
+       h2.ManifestacionHabilidad.anio = 1500;
+       h2.ManifestacionHabilidad.mes = 12;
+       h2.ManifestacionHabilidad.dia = 10;
+       h2.tipo = NATURAL;
 
-    Habilidad h3;
-    h3.nombreHabilidad = "Invisibilidad";
-    h3.cedula = 333;
-    h3.ManifestacionHabilidad.anio = 1500;
-    h3.ManifestacionHabilidad.mes = 12;
-    h3.ManifestacionHabilidad.dia = 10;
-    h3.tipo = NATURAL;
+       Habilidad h3;
+       h3.nombreHabilidad = "Invisibilidad";
+       h3.cedula = 333;
+       h3.ManifestacionHabilidad.anio = 1500;
+       h3.ManifestacionHabilidad.mes = 12;
+       h3.ManifestacionHabilidad.dia = 10;
+       h3.tipo = NATURAL;
 
-    Habilidad h4;
-    h4.nombreHabilidad = "Rayos laser";
-    h4.cedula = 444;
-    h4.ManifestacionHabilidad.anio = 1500;
-    h4.ManifestacionHabilidad.mes = 12;
-    h4.ManifestacionHabilidad.dia = 11;
-    h4.tipo = NATURAL;
+       Habilidad h4;
+       h4.nombreHabilidad = "Rayos laser";
+       h4.cedula = 444;
+       h4.ManifestacionHabilidad.anio = 1500;
+       h4.ManifestacionHabilidad.mes = 12;
+       h4.ManifestacionHabilidad.dia = 11;
+       h4.tipo = NATURAL;
 
-    Habilidad h5;
-    h5.nombreHabilidad = "Aire control";
-    h5.cedula = 444;
-    h5.ManifestacionHabilidad.anio = 1500;
-    h5.ManifestacionHabilidad.mes = 12;
-    h5.ManifestacionHabilidad.dia = 4;
-    h5.tipo = NATURAL;
+       Habilidad h5;
+       h5.nombreHabilidad = "Aire control";
+       h5.cedula = 444;
+       h5.ManifestacionHabilidad.anio = 1500;
+       h5.ManifestacionHabilidad.mes = 12;
+       h5.ManifestacionHabilidad.dia = 4;
+       h5.tipo = NATURAL;
 
-    Habilidad h6;
-    h6.nombreHabilidad = "Fuego control";
-    h6.cedula = 555;
-    h6.ManifestacionHabilidad.anio = 1500;
-    h6.ManifestacionHabilidad.mes = 12;
-    h6.ManifestacionHabilidad.dia = 8;
-    h6.tipo = NATURAL;
+       Habilidad h6;
+       h6.nombreHabilidad = "Fuego control";
+       h6.cedula = 555;
+       h6.ManifestacionHabilidad.anio = 1500;
+       h6.ManifestacionHabilidad.mes = 12;
+       h6.ManifestacionHabilidad.dia = 8;
+       h6.tipo = NATURAL;
 
-    // ------------------------------------------------ Cargar habilidad
+       // ------------------------------------------------ Cargar habilidad
 
-    printf("\n\n\n");
+       printf("\n\n\n");
 
-    if (ExisteSocio(socios, h1.cedula)) {
-        if (ListaVacia(habilidades)) {
-            IngresarPrimeraHabilidad(habilidades, h1);
-        } else {
-            if (FechaIngresadaMayorOigualALaUltimaFechaDeManifestacion(h1.ManifestacionHabilidad, habilidades->info.ManifestacionHabilidad)) {
-                IngresarPrimeraHabilidad(habilidades, h1);
-            } else {
-                    printf("La fecha de la habilidad ha ingresar es anterior la de la ultima habilidad registrada ");
-            }
-        }
-    } else {
-            printf("No existe ningun usuario en el sistema que contenga la cedula introducia en la habilidad\nAgregue socio primero\n");
-        }
+       if (ExisteSocio(socios, h1.cedula)) {
+           if (ListaVacia(habilidades)) {
+               IngresarPrimeraHabilidad(habilidades, h1);
+           } else {
+               if (FechaIngresadaMayorOigualALaUltimaFechaDeManifestacion(h1.ManifestacionHabilidad, habilidades->info.ManifestacionHabilidad)) {
+                   IngresarPrimeraHabilidad(habilidades, h1);
+               } else {
+                       printf("La fecha de la habilidad ha ingresar es anterior la de la ultima habilidad registrada ");
+               }
+           }
+       } else {
+               printf("No existe ningun usuario en el sistema que contenga la cedula introducia en la habilidad\nAgregue socio primero\n");
+           }
 
-    if (ExisteSocio(socios, h2.cedula)) {
-        if (ListaVacia(habilidades)) {
-            IngresarPrimeraHabilidad(habilidades, h2);
-        } else {
-            if (FechaIngresadaMayorOigualALaUltimaFechaDeManifestacion(h2.ManifestacionHabilidad, habilidades->info.ManifestacionHabilidad)) {
-                IngresarPrimeraHabilidad(habilidades, h2);
-            } else {
-                    printf("La fecha de la habilidad ha ingresar es anterior la de la ultima habilidad registrada ");
-            }
-        }
-    } else {
-            printf("No existe ningun usuario en el sistema que contenga la cedula introducia en la habilidad\nAgregue socio primero\n");
-        }
-
-
-
-/*
-    if (ExisteSocio(socios, h2.cedula)) {
-        AgregarHabilidadALaLista(habilidades, h2);
-    } else {
-        printf("No existe ningun usuario en el sistema que contenga la cedula introducia en la habilidad\n");
-    }
-
-    if (ExisteSocio(socios, h3.cedula)) {
-        AgregarHabilidadALaLista(habilidades, h3);
-    } else {
-        printf("No existe ningun usuario en el sistema que contenga la cedula introducia en la habilidad\n");
-    }
-
-    if (ExisteSocio(socios, h4.cedula)) {
-        AgregarHabilidadALaLista(habilidades, h4);
-    } else {
-        printf("No existe ningun usuario en el sistema que contenga la cedula introducia en la habilidad\n");
-    }
-
-    if (ExisteSocio(socios, h5.cedula)) {
-        AgregarHabilidadALaLista(habilidades, h5);
-    } else {
-        printf("No existe ningun usuario en el sistema que contenga la cedula introducia en la habilidad\n");
-    }
-
-    if (ExisteSocio(socios, h6.cedula)) {
-        AgregarHabilidadALaLista(habilidades, h6);
-    } else {
-        printf("No existe ningun usuario en el sistema que contenga la cedula introducia en la habilidad\n");
-    }
-printf("\nMostrar todas las habilidades registradas:");
-    MostrarTodasLasHabilidades(habilidades);
-
-
-//-----------------------------------------------socios sin habilidades
-    printf("\n\nLos socios sin habilidades son:");
-    ListarTodosLosSociosSinHabilidades(socios, habilidades);
-
-
-//----------------------------------------mostrar todas las habilidades de una cedula
-printf("\nHabilidades de una cedula");
-ListarHabilidadesDeUnSocio(habilidades,h1.cedula);
-
-//---------------------------------------mostrar habilidades de una fecha
-printf("\nMostrar habilidad en una fecha");
-ListarHabilidadesEnUnaFechaDada(habilidades, h1.ManifestacionHabilidad);
-
-//-------------------------------------------contar habilidades entre dos fechas
-printf("\n");
-printf("La cantidad de habilidad en rango de fecha es %d",ContarHabilidadesEntreDosFechasIngresadas(habilidades, h2.ManifestacionHabilidad, h1.ManifestacionHabilidad));
-
-//----------------------------------------Contar cantidad de habilidades por cedula
-
-printf("\nLa cantidad de habilidades por cedula es %d",CantidadDeHabilidadesPorCedula(habilidades, h1.cedula));
+       if (ExisteSocio(socios, h2.cedula)) {
+           if (ListaVacia(habilidades)) {
+               IngresarPrimeraHabilidad(habilidades, h2);
+           } else {
+               if (FechaIngresadaMayorOigualALaUltimaFechaDeManifestacion(h2.ManifestacionHabilidad, habilidades->info.ManifestacionHabilidad)) {
+                   IngresarPrimeraHabilidad(habilidades, h2);
+               } else {
+                       printf("La fecha de la habilidad ha ingresar es anterior la de la ultima habilidad registrada ");
+               }
+           }
+       } else {
+               printf("No existe ningun usuario en el sistema que contenga la cedula introducia en la habilidad\nAgregue socio primero\n");
+           }
 
 
 
-//---------------------------------------------mostrar socio mas poderoso
+   /*
+       if (ExisteSocio(socios, h2.cedula)) {
+           AgregarHabilidadALaLista(habilidades, h2);
+       } else {
+           printf("No existe ningun usuario en el sistema que contenga la cedula introducia en la habilidad\n");
+       }
 
-Mago MasPoderoso = socios->info;
-int cantMax = CantidadDeHabilidadesPorCedula(habilidades, socios->info.cedula);
+       if (ExisteSocio(socios, h3.cedula)) {
+           AgregarHabilidadALaLista(habilidades, h3);
+       } else {
+           printf("No existe ningun usuario en el sistema que contenga la cedula introducia en la habilidad\n");
+       }
 
-ListarSocioConMasHabilidades(socios, habilidades, MasPoderoso, cantMax);
-printf("\nSocio con mas habilidades tiene
-       %d", cantMax);
-MostrarMago(MasPoderoso);
+       if (ExisteSocio(socios, h4.cedula)) {
+           AgregarHabilidadALaLista(habilidades, h4);
+       } else {
+           printf("No existe ningun usuario en el sistema que contenga la cedula introducia en la habilidad\n");
+       }
+
+       if (ExisteSocio(socios, h5.cedula)) {
+           AgregarHabilidadALaLista(habilidades, h5);
+       } else {
+           printf("No existe ningun usuario en el sistema que contenga la cedula introducia en la habilidad\n");
+       }
+
+       if (ExisteSocio(socios, h6.cedula)) {
+           AgregarHabilidadALaLista(habilidades, h6);
+       } else {
+           printf("No existe ningun usuario en el sistema que contenga la cedula introducia en la habilidad\n");
+       }
+   printf("\nMostrar todas las habilidades registradas:");
+       MostrarTodasLasHabilidades(habilidades);
 
 
-    // ------------------------------------------------ Tiene alguna habilidad
+   //-----------------------------------------------socios sin habilidades
+       printf("\n\nLos socios sin habilidades son:");
+       ListarTodosLosSociosSinHabilidades(socios, habilidades);
 
-//    printf("\nEl socio con cedula %ld tiene alguna habilidad: ", h1.cedula);
-//    if (TieneAlgunaHabilidad(habilidades, h1.cedula)) {
-//        printf("Si");
-//
-//        // ------------------------------------------------ Fecha de la ultima habilidad registrada
-//        Fecha fechaDeManifestacionDeUltimaHabilidad = FechaDeUltimaHabilidadRegistradaPorUnSocio(habilidades,
-//                                                                                                 h1.cedula);
-//        printf("\nLa fecha de manifestacion de la ultima habilidad del socio es: ");
-//        mostrarFecha(fechaDeManifestacionDeUltimaHabilidad);
-//
-//    } else {
-//        printf("No");
-//    }
 
-*/
+   //----------------------------------------mostrar todas las habilidades de una cedula
+   printf("\nHabilidades de una cedula");
+   ListarHabilidadesDeUnSocio(habilidades,h1.cedula);
+
+   //---------------------------------------mostrar habilidades de una fecha
+   printf("\nMostrar habilidad en una fecha");
+   ListarHabilidadesEnUnaFechaDada(habilidades, h1.ManifestacionHabilidad);
+
+   //-------------------------------------------contar habilidades entre dos fechas
+   printf("\n");
+   printf("La cantidad de habilidad en rango de fecha es %d",ContarHabilidadesEntreDosFechasIngresadas(habilidades, h2.ManifestacionHabilidad, h1.ManifestacionHabilidad));
+
+   //----------------------------------------Contar cantidad de habilidades por cedula
+
+   printf("\nLa cantidad de habilidades por cedula es %d",CantidadDeHabilidadesPorCedula(habilidades, h1.cedula));
+
+
+
+   //---------------------------------------------mostrar socio mas poderoso
+
+   Mago MasPoderoso = socios->info;
+   int cantMax = CantidadDeHabilidadesPorCedula(habilidades, socios->info.cedula);
+
+   ListarSocioConMasHabilidades(socios, habilidades, MasPoderoso, cantMax);
+   printf("\nSocio con mas habilidades tiene
+          %d", cantMax);
+   MostrarMago(MasPoderoso);
+
+
+       // ------------------------------------------------ Tiene alguna habilidad
+
+   //    printf("\nEl socio con cedula %ld tiene alguna habilidad: ", h1.cedula);
+   //    if (TieneAlgunaHabilidad(habilidades, h1.cedula)) {
+   //        printf("Si");
+   //
+   //        // ------------------------------------------------ Fecha de la ultima habilidad registrada
+   //        Fecha fechaDeManifestacionDeUltimaHabilidad = FechaDeUltimaHabilidadRegistradaPorUnSocio(habilidades,
+   //                                                                                                 h1.cedula);
+   //        printf("\nLa fecha de manifestacion de la ultima habilidad del socio es: ");
+   //        mostrarFecha(fechaDeManifestacionDeUltimaHabilidad);
+   //
+   //    } else {
+   //        printf("No");
+   //    }
+
+   */
 
 }
 

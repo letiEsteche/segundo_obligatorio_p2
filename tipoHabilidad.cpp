@@ -1,16 +1,15 @@
 #include"tipoHabilidad.h"
 
-void CargarTipoDeHabilidadMago(TipoHabilidad &c)
-{
+void CargarTipoDeHabilidadMago(TipoHabilidad &c) {
     int opcion;
-    do{
+    do {
         printf("\nA continuacion se selecciona la habilidad del Mago...");
         printf("\n1- NATURAL");
         printf("\n2- POCONATURAL");
         printf("\n3- SOBRENATURAL");
-        printf("\nElija una opcion");
+        printf("\nElija una opcion:");
         scanf("%d", &opcion);
-        switch(opcion){
+        switch (opcion) {
             case 1:
                 c = NATURAL;
                 break;
@@ -18,18 +17,17 @@ void CargarTipoDeHabilidadMago(TipoHabilidad &c)
                 c = POCONATURAL;
                 break;
             case 3:
-                c= SOBRENATURAL;
+                c = SOBRENATURAL;
                 break;
             default:
-                printf("\nOpcion seleccionada incorrecta, vuelva a intentarlo...");
+                printf("\nLa opcion seleccionada es incorrecta, vuelva a intentarlo...");
 
         }
-    }while(!(opcion >=1 && opcion <= 3));
+    } while (!(opcion >= 1 && opcion <= 3));
 }
 
-void MostrarTipoDeHabilidadMago(TipoHabilidad c)
-{
-    switch(c){
+void MostrarTipoDeHabilidadMago(TipoHabilidad c) {
+    switch (c) {
         case NATURAL:
             printf("Habilidad natural");
             break;
@@ -42,13 +40,12 @@ void MostrarTipoDeHabilidadMago(TipoHabilidad c)
     }
 }
 
-int ContarTipoDeHabilidades(TipoHabilidad c, int contarNatural, int contarSobrenatural, int contarPoconatural)
-{
-    contarNatural = 0,contarSobrenatural = 0,contarPoconatural = 0;
-    if(c == 'NATURAL')
+int ContarTipoDeHabilidades(TipoHabilidad c, int contarNatural, int contarSobrenatural, int contarPoconatural) {
+    contarNatural = 0, contarSobrenatural = 0, contarPoconatural = 0;
+    if (c == 'NATURAL')
         contarNatural++;
-    else if(c == 'SOBRENATURAL')
+    else if (c == 'SOBRENATURAL')
         contarSobrenatural++;
-    else if(c == 'POCONATURAL')
+    else if (c == 'POCONATURAL')
         contarPoconatural++;
 }
