@@ -111,6 +111,7 @@ void leerListaHabilidad(Lista &lista) {
             IngresarPrimeraHabilidad(lista, habilidadAux);
             leerHabilidad(habilidadAux, archivo);
         }
-        fclose(archivo);
+
+        fclose(archivo); // cierra el archivo
     }
 }
