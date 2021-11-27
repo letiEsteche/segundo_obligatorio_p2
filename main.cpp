@@ -5,7 +5,7 @@
 int main()
 {
 
-    int opcion, Brujos=0, Hadas=0, Hechiceros=0, natural=0, sobrenatural=0, poconatural=0;
+    int opcion, Brujos=0, Hadas=0, Hechiceros=0, natural=0, sobrenatural=0, poconatural=0, cantMax;
     Mago m;
     long cedula;
     ABB socios;
@@ -16,9 +16,18 @@ int main()
     TipoHabilidad t;
     Fecha f, g;
 
+        printf("\t#################################################\n");
+        printf("\t#_SOCIEDAD DE MAGOS UNIDOS RECONTRA FANTASTICOS_#\n");
+        printf("\t#################################################\n\n");
+
+
+
+
 
     do{
+        printf("\n\t\t_MENU PRINCIPAL_\n");
         menuPrincipal(opcion);
+
 
         switch(opcion){
             case 1: //Ingresar mago
@@ -38,7 +47,7 @@ int main()
             case 3: //ingresar habilidad
                     CargarHabilidad(h);
 
-                    if (ExisteSocio(socios, cedula)) {
+                    if (ExisteSocio(socios, m.cedula)) {
                         if (ListaVacia(habilidades)) {
                             IngresarPrimeraHabilidad(habilidades, h);
                         } else {
@@ -52,7 +61,7 @@ int main()
                             printf("No existe ningun usuario en el sistema que contenga la cedula introducia en la habilidad\nAgregue socio primero\n");
                         }
 
-                    if (ExisteSocio(socios, cedula)) {
+                    if (ExisteSocio(socios, m.cedula)) {
                         if (ListaVacia(habilidades)) {
                             IngresarPrimeraHabilidad(habilidades, h);
                         } else {
@@ -80,30 +89,29 @@ int main()
                             case 1: //Mostrar cuantos socios de cada categoria magica
                                     ContarSociosDeCadaCategoria(socios, Brujos, Hadas, Hechiceros);
                                     printf("\nCantidad de socios por tipo:");
-                                    printf("\nBrujos: %d \nHadas: %d \nHechiceros: %d", Brujos, Hadas, Hechiceros);
-                                    printf("\n");
+                                    printf("\nBrujos: %d \nHadas: %d \nHechiceros: %d\n", Brujos, Hadas, Hechiceros);
                                     break;
 
-                            case 2: //Mostrar cuantas habilidades de cada tipo hay registradas
+            /*no funciona*/         case 2: //Mostrar cuantas habilidades de cada tipo hay registradas
                                     if (ListaVacia(habilidades))
                                         printf("\nNo hay habilidades ingresadas.");
                                     else{
                                         ContarTipoDeHabilidades(t, natural, sobrenatural, poconatural);
                                         printf("La cantidad de habilidades por tipo es: ");
-                                        printf("\n Natural %d \nSobrenatural %d\n Poconatural %d");
+                                        printf("\nNatural: %d \nSobrenatural: %d\nPoconatural: %d");
                                     }
                                     break;
 
-                            case 3: //Mostrar cuantos de los socios registrados en el sistema nacieron antes de una fecha dada fecha
+              /*no funciona*/       case 3: //Mostrar cuantos de los socios registrados en el sistema nacieron antes de una fecha dada fecha
                                     printf("\nIngrese una fecha: ");
                                     cargarFecha(f);
                                     printf("La cantidad de socios que nacieron antes de la fecha son %d\n",ContarCuantosSociosNacieronAntesDeFechaDada(socios, f));
                                     break;
 
-                            case 4: //Mostrar cuantas habilidades fueron ingresadas dentro de un rango de fechas dadas
+              /*no funciona*/       case 4: //Mostrar cuantas habilidades fueron ingresadas dentro de un rango de fechas dadas
                                     printf("Ingrese una fecha: ");
                                     cargarFecha(f);
-                                    printf("Ingrese otra fechaa mayor a la anterior: ");
+                                    printf("\nIngrese otra fecha mayor a la anterior: ");
                                     cargarFecha(g);
                                     printf("La cantidad de habilidades ingresadas en el rango de fecha es %d\n",ContarHabilidadesEntreDosFechasIngresadas(habilidades,f, g));
                                     break;
@@ -113,36 +121,59 @@ int main()
                                     printf("\n");
                                     break;
 
-                            case 6: //Listar todos aquellos socios registrados en el sistema que aun no han manifestado ninguna habilidad
+      /*no funciona*/               case 6: //Listar todos aquellos socios registrados en el sistema que aun no han manifestado ninguna habilidad
                                     printf("\n\nLos socios sin habilidades son: \n");
-                                    ListarTodosLosSociosSinHabilidades(socios, habilidades);
+
+                                    if (TieneAlgunaHabilidad(habilidades, m.cedula))
+                                         printf("Todos los socios tienen habilidades");
+                                    else
+                                        ListarTodosLosSociosSinHabilidades(socios, habilidades);
                                     break;
 
+/*muestra dos veces la misma habilidad*/ case 7: //Dada la cedula magica de un socio, listar todas las habilidades correspondientes a dicho socio
+                                    printf("\nHabilidades de una cedula, ingrese una cedula: ");
+                                    scanf("%d", &cedula);
+                                    ListarHabilidadesDeUnSocio(habilidades, cedula);
+                                    break;
 
+                            case 8: //Dada una fecha, listar todas las habilidades que hayan sido manifestadas en dicha fecha
+                                    printf("\nMostrar habilidad en una fecha");
+                                    printf("Ingrese una fecha: ");
+                                    cargarFecha(f);
+                                    ListarHabilidadesEnUnaFechaDada(habilidades, f);
+                                    break;
 
+                            case 9: //Listar los datos del socio mas poderoso registrado en el sistema
+                                    Mago MasPoderoso;
 
+                                    printf("\nLa cantidad de habilidades por cedula es %d",CantidadDeHabilidadesPorCedula(habilidades, cedula));
+                                    cantMax = CantidadDeHabilidadesPorCedula(habilidades, cedula);
+                                    ListarSocioConMasHabilidades(socios, habilidades, MasPoderoso, cantMax);
+                                    printf("\nSocio con mas habilidades tiene %d\n", cantMax);
+                                    MostrarMago(MasPoderoso);
 
+                                    break;
 
                             case 0: // salir
-                                    printf("Hasta luego...");
+                                    printf("\n\n");
                                     break;
+
                             default:
                                     printf("\nLa opcion seleccionada es invalida, por favor seleccione otra opcion.\n");
+                                    break;
                         }
-
-                    }while(opcion !=0);
+                    }while(opcion != 0);
                     break;
 
 
-
-            case 0: // salir
+            case 6: // salir
                     printf("Hasta luego...");
                     break;
             default:
                     printf("\nLa opcion seleccionada es invalida, por favor seleccione otra opcion.\n");
+                    break;
         }
-
-    }while(opcion !=0);
+    }while(opcion !=6);
 
 
 

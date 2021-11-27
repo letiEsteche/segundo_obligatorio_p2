@@ -64,7 +64,7 @@ void ListarHabilidadesEnUnaFechaDada(Lista L, Fecha f)
     while(L != NULL){
         if(compararFechas(DarFechaDeManifestacionHabilidad(L->info), f))
             MostrarHabilidad(L->info);
-        L=L->sig;
+        L = L->sig;
     }
 }
 
@@ -77,7 +77,7 @@ int ContarHabilidadesEntreDosFechasIngresadas(Lista L, Fecha primera, Fecha segu
         if(PrimeraFechaAnteriorOIgualALaSegunda(L->info.ManifestacionHabilidad,primera) &&
            PrimeraFechaAnteriorOIgualALaSegunda(segunda,L->info.ManifestacionHabilidad)){
                contarHabilidades++;
-               MostrarHabilidad(L->info);
+             //  MostrarHabilidad(L->info);
         }
          L = L->sig;
     }

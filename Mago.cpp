@@ -7,7 +7,7 @@ void CargarMago(Mago &m)
     strcrear(m.nombre);
     printf("\nIngrese el nombre del Mago: ");
     scan(m.nombre);
-    printf("\nIngrese la fecha de nacimiento del Mago: ");
+    printf("\nIngrese la fecha de nacimiento del Mago ");
     cargarFecha(m.nacimiento);
     strcrear(m.DimensionOrigen);
     printf("\nIngrese la dimension de origen del Mago: ");
