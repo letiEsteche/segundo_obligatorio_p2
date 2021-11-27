@@ -22,14 +22,10 @@ int main() {
     printf("\t#_SOCIEDAD DE MAGOS UNIDOS RECONTRA FANTASTICOS_#\n");
     printf("\t#################################################\n\n");
 
-
-
-
     // cargar socios
     leerArbolSocios(socios);
     // guardar habilidades
     leerListaHabilidad(habilidades);
-
 
     do {
         printf("\n\t\t_MENU PRINCIPAL_\n");
