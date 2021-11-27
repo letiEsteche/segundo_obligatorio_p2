@@ -6,10 +6,10 @@
 
 //ABB de todos los socios ordenar por cedula de menor a mayor
 typedef struct nodo_TodosLosSocios {
-                                    Mago info;
-                                    nodo_TodosLosSocios *hizq;
-                                    nodo_TodosLosSocios *hder;
-                                    } NodoSocio;
+    Mago info;
+    nodo_TodosLosSocios *hizq;
+    nodo_TodosLosSocios *hder;
+} NodoSocio;
 typedef NodoSocio *ABB;
 
 /* crear un �rbol vac�o */
@@ -40,7 +40,6 @@ int ContarCuantosSociosNacieronAntesDeFechaDada(ABB a, Fecha f);
 int ContarCuantosSociosNacieronAntesDeFechaDada(ABB a, Fecha f);
 
 
-
 //Listar todos aquellos socios registrados en el sistema que a�n no han manifestado ninguna
 //habilidad, ordenados por c�dula de menor a mayor. Los datos de un mismo socio (c�dula
 //m�gica, nombre, fecha de nacimiento, dimensi�n de origen y categor�a m�gica) deber�n
@@ -53,6 +52,9 @@ void ListarTodosLosSociosSinHabilidades(ABB a, Lista L);
 //caso de que no haya ninguno, emitir un mensaje que as� lo indique.
 void ListarSocioConMasHabilidades(ABB a, Lista L, Mago &masPoderoso, int &cantMax);
 
+void escribirArbolSocios(ABB arbol, FILE *archivo);
+
+void leerArbolSocios(ABB &arbol);
 
 
 #endif // ABBTODOSLOSSOCIOS_H_INCLUDED

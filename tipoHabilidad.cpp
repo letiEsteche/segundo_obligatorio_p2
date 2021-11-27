@@ -29,13 +29,13 @@ void CargarTipoDeHabilidadMago(TipoHabilidad &c) {
 void MostrarTipoDeHabilidadMago(TipoHabilidad c) {
     switch (c) {
         case NATURAL:
-            printf("Habilidad natural");
+            printf("Natural");
             break;
         case POCONATURAL:
-            printf("Habilidad poconatural");
+            printf("Poconatural");
             break;
         case SOBRENATURAL:
-            printf("Habilidad sobrenatural");
+            printf("Sobrenatural");
             break;
     }
 }

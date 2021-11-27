@@ -14,8 +14,13 @@ int main() {
     Crear(habilidades);
     TipoHabilidad t;
     Fecha f;
+    FILE *archivo;
 
-//    cargarHabilidades(habilidades);
+    // cargar socios
+    leerArbolSocios(socios);
+    // guardar habilidades
+    leerListaHabilidad(habilidades);
+
 
     do {
         menuPrincipal(opcion);
@@ -32,6 +37,7 @@ int main() {
             case 2: //mostrar mago ingresado
 //                    MostrarMago(m);
                 DesplegarTodosLosSocios(socios);
+                printf("\n");
                 break;
 
             case 3: //ingresar habilidad
@@ -55,6 +61,7 @@ int main() {
             case 4: //mostrar habilidad
 //                MostrarHabilidad(h);
                 MostrarTodasLasHabilidades(habilidades);
+                printf("\n");
                 break;
 
             case 5: //
@@ -97,9 +104,13 @@ int main() {
 
 
             case 0: // salir
-                printf("Guardado habilidades...");
-                guardarHabilidades(habilidades);
-                printf("Guardado finalizado.");
+                // guardar socios
+                archivo = fopen("Socios.txt", "wb");
+                escribirArbolSocios(socios, archivo);
+                fclose(archivo);
+
+                // guardar habilidades
+                escribirListaHabilidad(habilidades);
 
                 printf("Hasta luego...");
                 break;

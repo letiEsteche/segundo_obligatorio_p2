@@ -61,8 +61,8 @@ void ListarHabilidadesEnUnaFechaDada(Lista L, Fecha f);
 
 int ContarHabilidadesEntreDosFechasIngresadas(Lista L, Fecha primera, Fecha segunda);
 
-void guardarHabilidades(Lista lista);
+void escribirListaHabilidad(Lista lista);
 
-void cargarHabilidades(Lista &lista);
+void leerListaHabilidad(Lista &lista);
 
 #endif // LISTAHABILIDADESDESOCIO_H_INCLUDED

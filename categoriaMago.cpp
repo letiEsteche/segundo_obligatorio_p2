@@ -8,7 +8,7 @@ void CargarCategoriaMago(CategoriaMago &c)
         printf("\n1- BRUJO");
         printf("\n2- HADA");
         printf("\n3- HECHICERO");
-        printf("\nElija una opcion");
+        printf("\nElija una opcion:");
         scanf("%d", &opcion);
         switch(opcion){
             case 1:
@@ -31,13 +31,13 @@ void MostrarCategoriaMago(CategoriaMago c)
 {
     switch(c){
         case BRUJO:
-            printf("Es un Brujo");
+            printf("Brujo");
             break;
         case HADA:
-            printf("Es un Hada");
+            printf("Hada");
             break;
         case HECHICERO:
-            printf("Es un Hechicero");
+            printf("Hechicero");
             break;
     }
 }

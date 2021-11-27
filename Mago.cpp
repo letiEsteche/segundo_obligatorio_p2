@@ -24,7 +24,7 @@ void MostrarMago(Mago m)
     print(m.nombre);
     printf("| Fecha de nacimiento: ");
     mostrarFecha(m.nacimiento);
-    printf("| Dimension de origen: ");
+    printf(" | Dimension de origen: ");
     print(m.DimensionOrigen);
     printf(" | Categoria: ");
     MostrarCategoriaMago(m.categoria);
@@ -54,4 +54,30 @@ string DarDimensionOrigen(Mago m)
 CategoriaMago DarCategroriaMago (Mago m)
 {
     return m.categoria;
+}
+
+void escribirMago(Mago mago, FILE *archivo) {
+    escribirString(mago.nombre, archivo);
+
+    fwrite(&mago.cedula, sizeof(long), 1, archivo);
+
+    fwrite(&mago.nacimiento, sizeof(Fecha), 1, archivo);
+
+    escribirString(mago.DimensionOrigen, archivo);
+
+    fwrite(&mago.categoria, sizeof(CategoriaMago), 1, archivo);
+}
+
+void leerMago(Mago &mago, FILE *archivo) {
+    strcrear(mago.nombre);
+    leerString(mago.nombre, archivo);
+
+    fread(&mago.cedula, sizeof(long), 1, archivo);
+
+    fread(&mago.nacimiento, sizeof(Fecha), 1, archivo);
+
+    strcrear(mago.DimensionOrigen);
+    leerString(mago.DimensionOrigen, archivo);
+
+    fread(&mago.categoria, sizeof(CategoriaMago), 1, archivo);
 }

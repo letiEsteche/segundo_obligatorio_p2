@@ -1,16 +1,17 @@
 #ifndef HABILIDAD_H_INCLUDED
 #define HABILIDAD_H_INCLUDED
+
 #include "string.h"
 #include"fecha.h"
 #include "tipoHabilidad.h"
 
 
-typedef struct{
-                string nombreHabilidad;
-                Fecha ManifestacionHabilidad;
-                long cedula;
-                TipoHabilidad tipo;
-                }Habilidad;
+typedef struct {
+    string nombreHabilidad;
+    Fecha ManifestacionHabilidad;
+    long cedula;
+    TipoHabilidad tipo;
+} Habilidad;
 
 void CargarHabilidad(Habilidad &h);
 
@@ -24,8 +25,8 @@ long DarCedulaHabilidad(Habilidad h);
 
 TipoHabilidad DarTipoDeHabilidad(Habilidad h);
 
+void escribirHabilidad(Habilidad habilidad, FILE *archivo);
 
-
-//cargar mostrar y selectoras
+void leerHabilidad(Habilidad &habilidad, FILE *archivo);
 
 #endif // HABILIDAD_H_INCLUDED

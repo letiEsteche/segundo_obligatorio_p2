@@ -27,5 +27,15 @@ void scan(string &s);
 //print despliega un string por pantalla.
 void print(string s);
 
+void eliminarString(string &str);
+
+int tamanioString(string str);
+
+void copiarString(string str, string &copia);
+
+void escribirString(string s, FILE * archivo);
+
+void leerString(string &s, FILE * archivo);
+
 
 #endif // STRING_H_INCLUDED

@@ -93,7 +93,28 @@ void ListarSocioConMasHabilidades(ABB a, Lista L, Mago &masPoderoso, int &cantMa
         ListarSocioConMasHabilidades(a->hder,L,masPoderoso, cantMax);
 
     }
-
-
 }
+
+void escribirArbolSocios(ABB arbol, FILE *archivo) {
+    if (arbol != NULL) {
+        escribirMago(arbol->info, archivo);
+        escribirArbolSocios(arbol->hizq, archivo);
+        escribirArbolSocios(arbol->hder, archivo);
+    }
+}
+
+void leerArbolSocios(ABB &arbol) {
+    Crear(arbol);
+    FILE * archivo = fopen("Socios.txt", "rb");
+    if (archivo != NULL) {
+        Mago magoAux;
+        leerMago(magoAux, archivo);
+        while (!feof(archivo)) {
+            InsertarSocio(arbol, magoAux);
+            leerMago(magoAux, archivo);
+        }
+        fclose(archivo);
+    }
+}
+
 
