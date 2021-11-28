@@ -6,10 +6,10 @@
 
 //ABB de todos los socios ordenar por cedula de menor a mayor
 typedef struct nodo_TodosLosSocios {
-    Mago info;
-    nodo_TodosLosSocios *hizq;
-    nodo_TodosLosSocios *hder;
-} NodoSocio;
+                                    Mago info;
+                                    nodo_TodosLosSocios *hizq;
+                                    nodo_TodosLosSocios *hder;
+                                    } NodoSocio;
 typedef NodoSocio *ABB;
 
 /* crear un �rbol vac�o */

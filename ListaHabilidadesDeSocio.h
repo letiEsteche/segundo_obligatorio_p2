@@ -4,9 +4,9 @@
 #include "Habilidad.h"
 
 typedef struct HabilidadesDeSocioStruct {
-    Habilidad info;
-    HabilidadesDeSocioStruct *sig;
-} NodoHabilidad;
+                                            Habilidad info;
+                                            HabilidadesDeSocioStruct *sig;
+                                        } NodoHabilidad;
 
 typedef NodoHabilidad *Lista;
 
@@ -25,11 +25,13 @@ Fecha FechaDeUltimaHabilidadRegistradaPorUnSocio(Lista L, long cedula);
 
 void IngresarHabilidad(Lista &habilidades, Habilidad h);
 
+boolean HayHabilidadEnFechaDada(Lista L, Fecha f);
+
 void MostrarTodasLasHabilidades(Lista lista);
 
 //Contar cu�ntas habilidades de cada tipo (naturales, poco naturales y sobrenaturales) hay
 //registradas en el sistema.
-void CantidadHabilidadDeCadaTipo(Lista L, int &n, int &p, int &s);
+int CantidadHabilidadDeCadaTipo(Lista L, int &n, int &p, int &s);
 
 int ContarHabilidadesEntreDosFechasIngresadas(Lista l, Fecha desde, Fecha hasta);
 

@@ -40,12 +40,4 @@ void MostrarTipoDeHabilidadMago(TipoHabilidad c) {
     }
 }
 
-int ContarTipoDeHabilidades(TipoHabilidad c, int contarNatural, int contarSobrenatural, int contarPoconatural) {
-    contarNatural = 0, contarSobrenatural = 0, contarPoconatural = 0;
-    if (c == 'NATURAL')
-        contarNatural++;
-    else if (c == 'SOBRENATURAL')
-        contarSobrenatural++;
-    else if (c == 'POCONATURAL')
-        contarPoconatural++;
-}
+

@@ -59,8 +59,7 @@ int ContarCuantosSociosNacieronAntesDeFechaDada(ABB a, Fecha f)
     if (a == NULL)
         return 0;
     else {
-        if (f.dia < a->info.nacimiento.dia && f.mes < a->info.nacimiento.mes &&
-            f.anio < a->info.nacimiento.anio)
+        if (f.dia > a->info.nacimiento.dia && f.mes > a->info.nacimiento.mes && f.anio > a->info.nacimiento.anio)
             return 1 + ContarCuantosSociosNacieronAntesDeFechaDada(a->hder, f) + ContarCuantosSociosNacieronAntesDeFechaDada(a->hizq, f);
         else
             return ContarCuantosSociosNacieronAntesDeFechaDada(a->hder, f) + ContarCuantosSociosNacieronAntesDeFechaDada(a->hizq, f);
@@ -72,7 +71,7 @@ void ListarTodosLosSociosSinHabilidades(ABB a, Lista L)
 {
     if(a != NULL){
             ListarTodosLosSociosSinHabilidades(a->hizq, L);
-        if(TieneAlgunaHabilidad(L, DarCedula(a->info)== FALSE)){
+        if(TieneAlgunaHabilidad(L, a->info.cedula) == FALSE){
             MostrarMago(a->info);
         }
         ListarTodosLosSociosSinHabilidades(a->hder, L);

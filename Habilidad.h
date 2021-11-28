@@ -29,4 +29,5 @@ void escribirHabilidad(Habilidad habilidad, FILE *archivo);
 
 void leerHabilidad(Habilidad &habilidad, FILE *archivo);
 
+
 #endif // HABILIDAD_H_INCLUDED

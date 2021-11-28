@@ -22,7 +22,6 @@ void MostrarHabilidad(Habilidad h) {
     MostrarTipoDeHabilidadMago(h.tipo);
 }
 
-
 string DarNombreHabilidad(Habilidad h) {
     return h.nombreHabilidad;
 }

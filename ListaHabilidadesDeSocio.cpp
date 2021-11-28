@@ -47,32 +47,43 @@ void MostrarTodasLasHabilidades(Lista lista) {
     }
 }
 
-void ListarHabilidadesDeUnSocio(Lista L, long cedula) {
+void ListarHabilidadesDeUnSocio(Lista L, long cedula)
+{
     while (L != NULL) {
-        if (DarCedulaHabilidad(L->info) == cedula) {
+        if (DarCedulaHabilidad(L->info) == cedula)
+            MostrarHabilidad(L->info);
+        L = L->sig;
+    }
+}
+void ListarHabilidadesEnUnaFechaDada(Lista L, Fecha f)
+{
+    while (L != NULL) {
+        if (compararFechas(DarFechaDeManifestacionHabilidad(L->info), f)){
             MostrarHabilidad(L->info);
         }
         L = L->sig;
-
     }
 }
 
-void ListarHabilidadesEnUnaFechaDada(Lista L, Fecha f) {
-    while (L != NULL) {
-        if (compararFechas(DarFechaDeManifestacionHabilidad(L->info), f))
-            MostrarHabilidad(L->info);
-        L = L->sig;
-    }
+boolean HayHabilidadEnFechaDada(Lista L, Fecha f)
+{
+    boolean hayHabilidad = TRUE;
+    if(f.anio == L->info.ManifestacionHabilidad.anio)
+        hayHabilidad = FALSE;
+    else if(f.mes == L->info.ManifestacionHabilidad.mes)
+            hayHabilidad = FALSE;
+        else if(f.dia == L->info.ManifestacionHabilidad.dia)
+                hayHabilidad == FALSE;
+
+    return hayHabilidad;
 }
-
-
+                                                        // 10              20
 int ContarHabilidadesEntreDosFechasIngresadas(Lista L, Fecha primera, Fecha segunda) {
     int contarHabilidades = 0;
     while (L != NULL) {
-        if (PrimeraFechaAnteriorOIgualALaSegunda(L->info.ManifestacionHabilidad, primera) &&
-            PrimeraFechaAnteriorOIgualALaSegunda(segunda, L->info.ManifestacionHabilidad)) {
+        if (PrimeraFechaAnteriorOIgualALaSegunda(primera, L->info.ManifestacionHabilidad) &&
+            PrimeraFechaAnteriorOIgualALaSegunda(L->info.ManifestacionHabilidad, segunda)) {
             contarHabilidades++;
-            MostrarHabilidad(L->info);
         }
         L = L->sig;
     }
@@ -91,6 +102,19 @@ int CantidadDeHabilidadesPorCedula(Lista L, long cedula) {
     return contarHabilidadesPorCedula;
 }
 
+int CantidadHabilidadDeCadaTipo(Lista L, int &n, int &p, int &s)
+{
+    n = 0, s = 0, p = 0;
+    while(L != NULL){
+        if(L->info.tipo == NATURAL)
+            n++;
+        else if(L->info.tipo == POCONATURAL)
+            p++;
+        else if(L->info.tipo == SOBRENATURAL)
+            s++;
+    L = L->sig;
+    }
+}
 
 void escribirListaHabilidad(Lista lista) {
     FILE *archivo = fopen("Habilidades.txt", "wb");
